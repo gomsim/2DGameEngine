@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf8ba503-4358-4515-8ba9-563e84208a8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Game/Smoke.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Logic/Engine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Logic/EntityComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logic/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/GameRenderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/MenuRenderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/Renderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Projectile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graphics/GameRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graphics/MenuRenderer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graphics/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graphics/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graphics/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Projectile.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,35 +32,42 @@
     <session id="-252253837">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="8" />
+          <entry key="java" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="8" />
+          <entry key="JAVA" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1076" />
+          <entry key="dummy" value="15" />
+          <entry key="java" value="15261" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1076" />
+          <entry key="JAVA" value="15261" />
+          <entry key="PLAIN_TEXT" value="15" />
         </counts>
       </usages-collector>
     </session>
@@ -52,30 +75,75 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Logic/Game.java">
+        <entry file="file://$PROJECT_DIR$/src/Logic/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+            <state relative-caret-position="221">
+              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Logic/Entity.java">
+        <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="357">
+              <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-end-line="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3586#3587#0" expanded="true" />
+                <element signature="e#3620#3621#0" expanded="true" />
+                <element signature="e#3645#3646#0" expanded="true" />
+                <element signature="e#3678#3679#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Graphics/Window.java">
+        <entry file="file://$PROJECT_DIR$/src/Logic/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            <state relative-caret-position="68">
+              <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2006#2007#0" expanded="true" />
+                <element signature="e#2037#2038#0" expanded="true" />
+                <element signature="e#2076#2077#0" expanded="true" />
+                <element signature="e#2110#2111#0" expanded="true" />
+                <element signature="e#1920#1921#0" expanded="true" />
+                <element signature="e#1968#1969#0" expanded="true" />
+                <element signature="e#2187#2188#0" expanded="true" />
+                <element signature="e#2214#2215#0" expanded="true" />
+                <element signature="e#2247#2248#0" expanded="true" />
+                <element signature="e#2274#2275#0" expanded="true" />
+                <element signature="e#2116#2117#0" expanded="true" />
+                <element signature="e#2153#2154#0" expanded="true" />
+                <element signature="e#2315#2316#0" expanded="true" />
+                <element signature="e#2339#2340#0" expanded="true" />
+                <element signature="e#2365#2366#0" expanded="true" />
+                <element signature="e#2389#2390#0" expanded="true" />
+                <element signature="e#2416#2417#0" expanded="true" />
+                <element signature="e#2444#2445#0" expanded="true" />
+                <element signature="e#2472#2473#0" expanded="true" />
+                <element signature="e#2501#2502#0" expanded="true" />
+                <element signature="e#2534#2535#0" expanded="true" />
+                <element signature="e#2563#2564#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Logic/GravityComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+              <folding>
+                <element signature="e#114#115#0" expanded="true" />
+                <element signature="e#152#153#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,26 +152,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Graphics/Renderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+            <state relative-caret-position="268">
+              <caret line="18" column="121" selection-start-line="18" selection-start-column="121" selection-end-line="18" selection-end-column="121" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Graphics/GameRenderer.java">
+        <entry file="file://$PROJECT_DIR$/src/Graphics/Window.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Graphics/MenuRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+            <state relative-caret-position="561">
+              <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,6 +183,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>GameObject</find>
+      <find>inst</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -126,11 +197,25 @@
       <list>
         <option value="$PROJECT_DIR$/src/Projectile.java" />
         <option value="$PROJECT_DIR$/src/Logic/Projectile.java" />
-        <option value="$PROJECT_DIR$/src/Graphics/Renderer.java" />
-        <option value="$PROJECT_DIR$/src/Graphics/GameRenderer.java" />
         <option value="$PROJECT_DIR$/src/Graphics/MenuRenderer.java" />
-        <option value="$PROJECT_DIR$/src/Graphics/Window.java" />
+        <option value="$PROJECT_DIR$/src/Graphics/GameRenderer.java" />
+        <option value="$PROJECT_DIR$/src/Graphics/GameObject.java" />
         <option value="$PROJECT_DIR$/src/Logic/Game.java" />
+        <option value="$PROJECT_DIR$/src/Logic/PhysicalEntity.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Utility.java" />
+        <option value="$PROJECT_DIR$/src/Graphics/Window.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Engine.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Bomb.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Smoke.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Main.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Player.java" />
+        <option value="$PROJECT_DIR$/src/Graphics/Renderer.java" />
+        <option value="$PROJECT_DIR$/src/Logic/EntityComponent.java" />
+        <option value="$PROJECT_DIR$/src/Logic/GravityComponent.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Entity.java" />
+        <option value="$PROJECT_DIR$/src/Game/Player.java" />
+        <option value="$PROJECT_DIR$/src/Game/Bomb.java" />
+        <option value="$PROJECT_DIR$/src/Game/Smoke.java" />
       </list>
     </option>
   </component>
@@ -152,8 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -170,12 +253,26 @@
               <item name="Flygplansspel" type="b2602c69:ProjectViewProjectNode" />
               <item name="Flygplansspel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Flygplansspel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flygplansspel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Graphics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Flygplansspel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flygplansspel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Logic" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,6 +280,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -196,13 +294,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Logic.Game" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Engine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Logic.Engine" />
       <module name="Flygplansspel" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Logic.*" />
+          <option name="PATTERN" value="Game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -210,9 +308,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Logic.Main" />
+      <module name="Flygplansspel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Engine" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Game" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Engine" />
       </list>
     </recent_temporary>
   </component>
@@ -234,28 +350,37 @@
       <workItem from="1571125940138" duration="586000" />
       <workItem from="1571132893370" duration="23000" />
       <workItem from="1571773575997" duration="5667000" />
-      <workItem from="1571780200573" duration="840000" />
+      <workItem from="1571780200573" duration="1094000" />
+      <workItem from="1571912459891" duration="1427000" />
+      <workItem from="1571940727485" duration="7905000" />
+      <workItem from="1571949570974" duration="2207000" />
+      <workItem from="1572013143015" duration="3473000" />
+      <workItem from="1572021353587" duration="2864000" />
+      <workItem from="1572100188145" duration="1753000" />
+      <workItem from="1574941684438" duration="25000" />
+      <workItem from="1590343838478" duration="5508000" />
+      <workItem from="1590404079128" duration="52142000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8688000" />
+    <option name="totallyTimeSpent" value="86246000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09830729" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1438802" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Run with VisualVM" order="0" />
-      <window_info anchor="bottom" id="Messages" order="1" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.3292683" />
       <window_info anchor="bottom" id="Debug with VisualVM" order="2" />
       <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="4" weight="0.3292683" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39972898" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" />
@@ -270,7 +395,7 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="right" id="Run" order="7" visible="true" weight="0.17057292" />
+      <window_info active="true" anchor="right" id="Run" order="7" visible="true" weight="0.096354164" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +406,22 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Projectile.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.desktop/javax/imageio/ImageIO.java" />
+    <entry file="file://$PROJECT_DIR$/src/Graphics/GameObject.java" />
+    <entry file="file://$PROJECT_DIR$/src/Graphics/MenuRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Projectile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -288,17 +429,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/Logic/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+        <state relative-caret-position="527">
+          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Graphics/Window.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="561">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#2993#2994#0" expanded="true" />
+            <element signature="e#2980#2981#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
+            <element signature="e#3052#3053#0" expanded="true" />
+            <element signature="e#3088#3089#0" expanded="true" />
+            <element signature="e#3401#3402#0" expanded="true" />
+            <element signature="e#3441#3442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -307,29 +478,108 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Graphics/Renderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+        <state relative-caret-position="268">
+          <caret line="18" column="121" selection-start-line="18" selection-start-column="121" selection-end-line="18" selection-end-column="121" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graphics/GameRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/Logic/GravityComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="85">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding>
+            <element signature="e#114#115#0" expanded="true" />
+            <element signature="e#152#153#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graphics/MenuRenderer.java">
+    <entry file="file://$PROJECT_DIR$/src/Logic/EntityComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        <state relative-caret-position="51">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/PhysicalEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="25" />
+          <folding>
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="68">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2006#2007#0" expanded="true" />
+            <element signature="e#2037#2038#0" expanded="true" />
+            <element signature="e#2076#2077#0" expanded="true" />
+            <element signature="e#2110#2111#0" expanded="true" />
+            <element signature="e#1920#1921#0" expanded="true" />
+            <element signature="e#1968#1969#0" expanded="true" />
+            <element signature="e#2187#2188#0" expanded="true" />
+            <element signature="e#2214#2215#0" expanded="true" />
+            <element signature="e#2247#2248#0" expanded="true" />
+            <element signature="e#2274#2275#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2153#2154#0" expanded="true" />
+            <element signature="e#2315#2316#0" expanded="true" />
+            <element signature="e#2339#2340#0" expanded="true" />
+            <element signature="e#2365#2366#0" expanded="true" />
+            <element signature="e#2389#2390#0" expanded="true" />
+            <element signature="e#2416#2417#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
+            <element signature="e#2472#2473#0" expanded="true" />
+            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#2534#2535#0" expanded="true" />
+            <element signature="e#2563#2564#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Bomb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Smoke.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="51" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="41" lean-forward="true" selection-start-line="22" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3586#3587#0" expanded="true" />
+            <element signature="e#3620#3621#0" expanded="true" />
+            <element signature="e#3645#3646#0" expanded="true" />
+            <element signature="e#3678#3679#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
