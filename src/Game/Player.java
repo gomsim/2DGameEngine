@@ -10,12 +10,16 @@ import java.awt.*;
 public class Player extends Entity {
 
     private int spriteCounter;
+    // Offset to make the plane look like it shifts its body movement slightly before turning in space
+    private Utility.Mapper rotationMapper = Utility.getCircularMapper(-180,180,0,15, 0);//-0.2);
     private double maxSpeed = 12;
     private double thrustForce = maxSpeed * 0.06;
+    private static final int IDLE = 0;
     private static final int THRUSTING = 1;
     private static final int SHOOTING = 2;
     private static final int BOTH = THRUSTING + SHOOTING;
-    private int state;
+    private int environmentState;
+    private int actionState;
     private int bombCooldown;
 
     public Player(int x, int y){
@@ -25,94 +29,58 @@ public class Player extends Entity {
     }
 
     public Image getTexture(){
-        int y = 0;
         double rot = Utility.angle(getVelX(),getVelY());
-        if (getVelX() >= 0){
-            if (rot >= -90 && rot <= -80){
-                y = 11;
-            }else if (rot >= -80 && rot <= -60){
-                y = 14;
-            }else if (rot >= -60 && rot <= -30){
-                y = 4;
-            }else if (rot >= -30 && rot <= -10){
-                y = 3;
-            }else if (rot >= -10 && rot <= 10){
-                y = 0;
-            }else if (rot >= 10 && rot <= 30){
-                y = 1;
-            }else if (rot >= 30 && rot <= 60){
-                y = 2;
-            }else if (rot >= 60 && rot <= 80){
-                y = 13;
-            }else if (rot >= 80 && rot <= 90){
-                y = 10;
-            }
-        }else{
-            if (rot >= -90 && rot <= -80){
-                y = 10;
-            }else if (rot >= -80 && rot <= -60){
-                y = 12;
-            }else if (rot >= -60 && rot <= -30){
-                y = 9;
-            }else if (rot >= -30 && rot <= -10){
-                y = 8;
-            }else if (rot >= -10 && rot <= 10){
-                y = 5;
-            }else if (rot >= 10 && rot <= 30){
-                y = 6;
-            }else if (rot >= 30 && rot <= 60){
-                y = 7;
-            }else if (rot >= 60 && rot <= 80){
-                y = 15;
-            }else if (rot >= 80 && rot <= 90){
-                y = 11;
-            }
-        }
-
+        int y = rotationMapper.mapInt(rot);
         return getTexture(spriteCounter % 3,y);
     }
 
     public void action(){
-        super.action();
-
-        //setRelativePosition(0,spriteCounter % 5 == 0 ? -3:3);
-
+        //Uncommenting this changes the thrustforce based on your current speed.
+        //thrustForce = 0.06 * Utility.magnitude(getVelX(),getVelY());
         if (bombCooldown != 0)
             bombCooldown--;
 
-        switch (state){
+        switch (actionState){
             case THRUSTING:
-                //TODO: Effect here
-                double[] perpendicular = Utility.perpendicular(getVelX(), getVelY(), Utility.LEFT);
-                double[] thrust = Utility.multiply(Utility.unitVector(perpendicular[Engine.X],perpendicular[Engine.Y]),thrustForce);
-                addVelocityCapped(thrust[Engine.X],thrust[Engine.Y],maxSpeed);
+                thrust();
                 break;
             case SHOOTING:
-                //TODO: Effect here
-                if (bombCooldown == 0){
-                    Bomb bomb = new Bomb(getX()+((double)getWidth())/2+getVelX()*10,getY()+((double)getHeight())/2+getVelY()*10);
-                    bomb.setVelocity(getVelX()*1.7,getVelY()*1.7);
-                    Engine.instance().add(bomb);
-                    bombCooldown = 30;
-                }
+                shoot();
                 break;
             case BOTH:
-                //TODO: Effect here
+                thrust();
+                shoot();
                 break;
         }
+        //Note: More frequent smoke looks like the plane's damaged. Freq of 1 looks like near crash.
         if (spriteCounter % 5 == 0){
-            Engine.instance().add(new Smoke(getX()+((double)getWidth())/2-getVelX()*10, getY()+((double)getHeight())/2-getVelY()*10, 16,16));
+            double[] spawnPoint = getEdgePoint(Utility.angle(-getVelX(),-getVelY()));
+            Engine.instance().add(new Smoke(spawnPoint[Engine.X],spawnPoint[Engine.Y]));
         }
-       // System.out.println(getVelX() + " " + getVelY());
 
         spriteCounter++;
-        state = 0;
+        actionState = IDLE;
     }
 
-    public void thrust(){
-        state += THRUSTING;
+    private void thrust(){
+        double[] perpendicular = Utility.perpendicular(getVelX(), getVelY(), Utility.LEFT);
+        double[] thrust = Utility.multiply(Utility.unitVector(perpendicular[Engine.X],perpendicular[Engine.Y]),thrustForce);
+        addVelocityCapped(thrust[Engine.X],thrust[Engine.Y],maxSpeed);
     }
-    public void shoot(){
-        state += SHOOTING;
+    private void shoot(){
+        if (bombCooldown == 0){
+            double[] spawnPoint = getEdgePoint(Utility.angle(getVelX(),getVelY()));
+            Bomb bomb = new Bomb(spawnPoint[Engine.X],spawnPoint[Engine.Y], getVelX(), getVelY());
+
+            Engine.instance().add(bomb);
+            bombCooldown = 30;
+        }
+    }
+
+    public void setThrusting(){
+        actionState += THRUSTING;
+    }
+    public void setShooting(){
+        actionState += SHOOTING;
     }
 }

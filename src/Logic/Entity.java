@@ -11,19 +11,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class Entity {
-    //TODO: Rotation: (rotate texture, edjust bounding box)
+    //TODO: Rotation: (rotate texture, adjust bounding box)
     //TODO:
     private static BufferedImage nullSprite;
     private ArrayList<EntityComponent> components = new ArrayList<>();
 
     private double x, y;
+    private double z;
     private double width, height;
     private double velX, velY;
     private String[] traits;
     private BufferedImage texture;
     private int spriteWidth, spriteHeight;
 
-    public Entity(double x, double y, int width, int height, String texturePath, int spriteWidth, int spriteHeight, String ... traits){
+    public Entity(double x, double y, int width, int height, String texturePath, int textureWidth, int textureHeight, String ... traits){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -35,8 +36,8 @@ public abstract class Entity {
         }catch(IOException e){
             e.printStackTrace();
         }
-        this.spriteWidth = spriteWidth;
-        this.spriteHeight = spriteHeight;
+        this.spriteWidth = textureWidth;
+        this.spriteHeight = textureHeight;
     }
 
     public Entity(double x, double y, int width, int height, String texturePath, String ... traits){
@@ -61,11 +62,16 @@ public abstract class Entity {
         components.remove(component);
     }
 
+    public void setZ(double z){
+        this.z = z;
+    }
+
     public void tick(){
         for (EntityComponent component: components)
             component.apply(this);
         resolveMovement();
         action();
+        react(Engine.instance().getFocused());
     }
 
     public void resolveMovement(){
@@ -73,6 +79,11 @@ public abstract class Entity {
         y += velY;
     }
     public void action(){}
+    public void react(Entity focus){}
+
+    public double[] getEdgePoint(double angle){
+        return Utility.add(getCenter(), Utility.multiply(Utility.vector(angle),width/2));
+    }
     public double[] getCenter(){
         return new double[] {x + width/2, y + height/2};
     }
@@ -115,7 +126,6 @@ public abstract class Entity {
         velX = (velX + x) * magRatio;
         velY = (velY + y) * magRatio;
     }
-
 
     public double getX() {
         return x;

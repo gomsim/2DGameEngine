@@ -9,8 +9,8 @@ public class Smoke extends Entity {
 
     private int counter = 20;
 
-    public Smoke(double x, double y, int width, int height){
-        super(x,y,width,height,"GameResources/SmokeAA.png");
+    public Smoke(double x, double y){
+        super(x,y,24,24,"GameResources/SmokeAA.png",16,16);
         setVelocity(Math.random()*3,Math.random()*3);
     }
 

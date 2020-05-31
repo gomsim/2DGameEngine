@@ -10,11 +10,20 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Engine {
 
+    //TODO: Course handler: Takes large-ass course sprite from Aseprite and divides into 32/64-pix Entities
+    //TODO: Need support for Z-axis In Basic Entity class because the order of rendering needs to be controlled
+    //TODO:    eg. 1.skybox, 2.clouds, 3.ground, 4.character (reverse z-order)
+    //TODO: Paralax effect depedency can take advantage of Z-value
+    //TODO: Keep static constants of typical Z-values in entity
+    //TODO:    eg. Z_FOREGROUND, Z_CHARACTER, Z_PROPS, Z_BACKGROUND, Z_FAR_BACKGROUND, Z_SKYBOX
+    //TODO: Engine needs to keep entities in a sorted list, eg. PriorityQueue (med en extern comparator baserad på z)
+
     private static Engine instance;
-    private Window window;
-    private Renderer renderer;
+    private Entity focus;
+    private Renderer renderer = new Renderer();
     public static final int X = 0, Y = 1;
     private static final int FPS = 60;
+    private static final int EXISTENCE_MARGIN = 1000;
     public static final double GRAVITY = 0.2;
     private CopyOnWriteArrayList<Entity> entities = new CopyOnWriteArrayList<>();
     public CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
@@ -28,7 +37,7 @@ public class Engine {
     }
 
     public void run(){
-        window = new Window(renderer, keyInputBuffer);
+        new Window(renderer, keyInputBuffer);
         boolean running = true;
         int tickInterval = 1000 / FPS;
         long nextTick;
@@ -49,7 +58,7 @@ public class Engine {
             //Do all object's tick()
             for (Entity entity: entities){
                 entity.tick();
-                if (entity.getX() < -1000 || entity.getX() > renderer.getWidth() + 1000 || entity.getY() < -1000 || entity.getY() > renderer.getHeight() + 1000)
+                if (entity.getX() < -EXISTENCE_MARGIN || entity.getX() > renderer.getWidth() + EXISTENCE_MARGIN || entity.getY() < -EXISTENCE_MARGIN || entity.getY() > renderer.getHeight() + EXISTENCE_MARGIN)
                     remove(entity);
             }
 
@@ -90,6 +99,14 @@ public class Engine {
         return instance;
     }
 
+    public int getWidth(){
+        //return renderer.getWidth();
+        return 1920;
+    }
+    public int getHeight(){
+        //return renderer.getHeight();
+        return 1080;
+    }
     public CopyOnWriteArrayList<Entity> getEntities(){
         return entities;
     }
@@ -104,7 +121,10 @@ public class Engine {
     public void remove(Entity entity){
         toRemove.add(entity);
     }
-    public void setRenderer(Renderer renderer){
-        this.renderer = renderer;
+    public void setFocus(Entity focus){
+        this.focus = focus;
+    }
+    public Entity getFocused(){
+        return focus;
     }
 }
