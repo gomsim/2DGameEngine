@@ -17,18 +17,20 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
         this.comparator = comparator;
     }
 
-    //TODO: AddAll and removeAll functions
+    //TODO: removeAll functions
     //TODO: binary search on add and remove
 
     @SuppressWarnings("unchecked")
     public boolean add(E ... toAdd){
-        /*System.out.print("Added: [");
-        for (E element: toAdd)
-            System.out.print(element + ", ");
-        System.out.println("]");*/
+        if (toAdd.length == 0)
+            return false;
         Object[] oldRef;
         Object[] newRef;
-        Arrays.sort(toAdd,comparator);
+        Arrays.sort(toAdd,comparator.reversed());
+        /*System.out.print("Added: [");
+        for (E element: toAdd)
+            System.out.print(((Entity)element).getZ() + ", ");
+        System.out.println("]");*/
         int i = 0;
         int round = 0;
         do{
@@ -50,7 +52,7 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
 
         /*System.out.print("Entities: [");
         for (Object element: elements.get())
-            System.out.print(element + ", ");
+            System.out.print(((Entity)element).getZ() + ", ");
         System.out.println("]");*/
         return true;
     }

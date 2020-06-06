@@ -22,8 +22,8 @@ public class Game {
         engine.registerKeyBinding(KeyEvent.VK_SPACE,()->player.setShooting());
 
         engine.add(new Sky());
-        for (int i = 0; i < 10; i++){
-            engine.add(new Cloud((double)random.nextInt(Engine.getWidth()),(double)random.nextInt(300)));
+        for (int i = 0; i < 50; i++){
+            engine.add(Cloud.createCloud((double)random.nextInt(Engine.getWidth()),(double)random.nextInt(300)));
         }
 
         engine.run();

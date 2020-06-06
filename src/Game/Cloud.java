@@ -2,15 +2,16 @@ package Game;
 
 import Logic.Engine;
 import Logic.Entity;
+import Logic.Utility;
 
 import java.awt.*;
 
 public class Cloud extends Entity {
 
-    public Cloud(double x, double y){
-        super(x,y,128,128,"GameResources/Cloud.png", 32, 32);
-        setVelocity(-Math.random(),0);
-        setZ(5);
+    public Cloud(double x, double y, double z){
+        super(x,y,128*Utility.inverseSquare(z)*2,128*Utility.inverseSquare(z)*2,"GameResources/Cloud.png", 32, 32);
+        setZ(z);
+        setVelocity(-100*Utility.inverseSquare(z*10),0);
     }
 
     @Override
@@ -20,6 +21,11 @@ public class Cloud extends Entity {
 
     public void action(){
         if (getX() < -getWidth())
-            setPosition(Engine.instance().getWidth(),getY());
+            setPosition(Engine.getWidth(),getY());
+    }
+
+    public static Cloud createCloud(double x, double y){
+        double distance = 1 + Math.random();
+        return new Cloud(x,y,distance);
     }
 }

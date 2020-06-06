@@ -17,7 +17,6 @@ public class Player extends Entity {
     private static final int IDLE = 0;
     private static final int THRUSTING = 1;
     private static final int SHOOTING = 2;
-    private static final int DOWN = 5;
     private static final int BOTH = THRUSTING + SHOOTING;
     private int environmentState;
     private int actionState;

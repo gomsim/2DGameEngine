@@ -62,6 +62,10 @@ public class Utility {
         return scaledImage;
     }
 
+    public static double inverseSquare(double z){
+        return 1/(Math.pow(z,2));
+    }
+
     public static Mapper getMapper(double from, double to){
         return new Mapper(0,from,0,to);
     }

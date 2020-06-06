@@ -27,7 +27,7 @@ public abstract class Entity {
     private String[] traits;
     private BufferedImage texture;
 
-    public Entity(double x, double y, int width, int height, String texturePath, int textureWidth, int textureHeight, String ... traits){
+    public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight, String ... traits){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -36,7 +36,7 @@ public abstract class Entity {
         try{
             nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
             texture = ImageIO.read(new File(texturePath));
-            texture = Utility.resize(texture,width,height,(double)width/textureWidth,(double)height/textureHeight);
+            texture = Utility.resize(texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
             texture = Renderer.makeCompatibleImage(texture);
         }catch(IOException e){
             e.printStackTrace();

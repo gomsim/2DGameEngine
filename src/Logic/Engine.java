@@ -24,11 +24,12 @@ public class Engine {
 
     private static Engine instance;
     private Entity focus;
-    private Window window;
     private Renderer renderer = new Renderer();
     public static final int X = 0, Y = 1;
     public static final int FPS = 60;
     private static final int EXISTENCE_MARGIN = 1000;
+    public static final int WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+    public static final int HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
     public static final double GRAVITY = 0.2;
     private SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
     public CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
@@ -110,10 +111,10 @@ public class Engine {
     }
 
     public static int getWidth(){
-        return Toolkit.getDefaultToolkit().getScreenSize().width;
+        return WIDTH;
     }
     public static int getHeight(){
-        return Toolkit.getDefaultToolkit().getScreenSize().height;
+        return HEIGHT;
     }
     public SortedCopyOnWriteArrayList<Entity> getEntities(){
         return entities;
@@ -138,7 +139,7 @@ public class Engine {
 
     private class ZComparator implements Comparator<Entity> {
         public int compare(Entity first, Entity second){
-            return (int)(second.getZ() - first.getZ());
+            return Double.compare(first.getZ(),second.getZ());
         }
     }
 }

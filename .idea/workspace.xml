@@ -2,22 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf8ba503-4358-4515-8ba9-563e84208a8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameResources/Sky.png" beforeDir="false" afterPath="$PROJECT_DIR$/GameResources/Sky.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Bomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Cloud.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Cloud.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Ground.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Ground.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/Renderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Graphics/Renderer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Engine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Sky.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Sky.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Smoke.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Game/Smoke.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Engine$ZComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Engine$ZComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Engine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Engine.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/SortedCopyOnWriteArrayList$SortedCopyOnWriteArrayListIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/SortedCopyOnWriteArrayList$SortedCopyOnWriteArrayListIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/SortedCopyOnWriteArrayList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/SortedCopyOnWriteArrayList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Utility$CircularMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Utility$CircularMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Utility$Mapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Utility$Mapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Flygplansspel/Logic/Utility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Cloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Cloud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Graphics/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graphics/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Sky.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Sky.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Engine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Utility.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,7 +39,7 @@
     <session id="-252253837">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="3" />
@@ -51,23 +59,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="56" />
+          <entry key="java" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="56" />
+          <entry key="JAVA" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="19" />
-          <entry key="java" value="26870" />
+          <entry key="java" value="27612" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="26870" />
+          <entry key="JAVA" value="27612" />
           <entry key="PLAIN_TEXT" value="19" />
         </counts>
       </usages-collector>
@@ -78,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,11 +95,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/Sky.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="88" selection-start-line="10" selection-start-column="88" selection-end-line="10" selection-end-column="88" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="58" column="88" selection-start-line="58" selection-start-column="88" selection-end-line="58" selection-end-column="88" />
+            <state relative-caret-position="-551">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3411#3412#0" expanded="true" />
@@ -106,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="455">
+              <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,11 +136,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/Cloud.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="51" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+              <folding>
+                <element signature="e#2638#2639#0" expanded="true" />
+                <element signature="e#2682#2683#0" expanded="true" />
+                <element signature="e#2968#2969#0" expanded="true" />
+                <element signature="e#3013#3014#0" expanded="true" />
+                <element signature="e#3048#3049#0" expanded="true" />
+                <element signature="e#3094#3095#0" expanded="true" />
+                <element signature="e#3436#3437#0" expanded="true" />
+                <element signature="e#3501#3502#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Logic/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+            <state relative-caret-position="336">
+              <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
               <folding>
+                <element signature="e#4353#4354#0" expanded="true" />
+                <element signature="e#4381#4382#0" expanded="true" />
+                <element signature="e#4416#4417#0" expanded="true" />
+                <element signature="e#4445#4446#0" expanded="true" />
                 <element signature="e#4321#4322#0" expanded="true" />
                 <element signature="e#4352#4353#0" expanded="true" />
                 <element signature="e#4598#4599#0" expanded="true" />
@@ -137,31 +192,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-              <folding>
-                <element signature="e#2632#2633#0" expanded="true" />
-                <element signature="e#2676#2677#0" expanded="true" />
-                <element signature="e#2962#2963#0" expanded="true" />
-                <element signature="e#3007#3008#0" expanded="true" />
-                <element signature="e#3042#3043#0" expanded="true" />
-                <element signature="e#3088#3089#0" expanded="true" />
-                <element signature="e#3430#3431#0" expanded="true" />
-                <element signature="e#3495#3496#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="384">
+              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2337#2338#0" expanded="true" />
+                <element signature="e#2377#2378#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -170,8 +208,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Graphics/Renderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+            <state relative-caret-position="421">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#480#481#0" expanded="true" />
@@ -233,17 +271,17 @@
         <option value="$PROJECT_DIR$/src/Logic/Main.java" />
         <option value="$PROJECT_DIR$/src/Game/Bomb.java" />
         <option value="$PROJECT_DIR$/src/Game/Ground.java" />
-        <option value="$PROJECT_DIR$/src/Game/Sky.java" />
-        <option value="$PROJECT_DIR$/src/Game/Cloud.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Utility.java" />
         <option value="$PROJECT_DIR$/src/Game/Smoke.java" />
         <option value="$PROJECT_DIR$/src/Graphics/Window.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Entity.java" />
         <option value="$PROJECT_DIR$/src/Graphics/Renderer.java" />
-        <option value="$PROJECT_DIR$/src/Game/Game.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Engine.java" />
-        <option value="$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java" />
         <option value="$PROJECT_DIR$/src/Game/Player.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Utility.java" />
+        <option value="$PROJECT_DIR$/src/Game/Game.java" />
+        <option value="$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java" />
+        <option value="$PROJECT_DIR$/src/Game/Cloud.java" />
+        <option value="$PROJECT_DIR$/src/Game/Sky.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Entity.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Engine.java" />
       </list>
     </option>
   </component>
@@ -400,16 +438,15 @@
       <workItem from="1591298136352" duration="7433000" />
       <workItem from="1591381366963" duration="263000" />
       <workItem from="1591387327576" duration="1733000" />
-      <workItem from="1591441084381" duration="2591000" />
+      <workItem from="1591441084381" duration="9837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171969000" />
+    <option name="totallyTimeSpent" value="179215000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1438802" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -436,7 +473,7 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="right" id="Run" order="7" visible="true" weight="0.24283855" />
+      <window_info anchor="right" id="Run" order="7" weight="0.25520834" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1438802" />
@@ -521,74 +558,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Cloud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Sky.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/Smoke.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Utility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graphics/Renderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -603,11 +578,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graphics/Renderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#518#519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Utility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2337#2338#0" expanded="true" />
+            <element signature="e#2377#2378#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding>
+            <element signature="e#2638#2639#0" expanded="true" />
+            <element signature="e#2682#2683#0" expanded="true" />
+            <element signature="e#2968#2969#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
+            <element signature="e#3048#3049#0" expanded="true" />
+            <element signature="e#3094#3095#0" expanded="true" />
+            <element signature="e#3436#3437#0" expanded="true" />
+            <element signature="e#3501#3502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Cloud.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="51" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Sky.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="88" selection-start-line="10" selection-start-column="88" selection-end-line="10" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-551">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3411#3412#0" expanded="true" />
+            <element signature="e#3451#3452#0" expanded="true" />
+            <element signature="e#3482#3483#0" expanded="true" />
+            <element signature="e#3521#3522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+        <state relative-caret-position="336">
+          <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
           <folding>
+            <element signature="e#4353#4354#0" expanded="true" />
+            <element signature="e#4381#4382#0" expanded="true" />
+            <element signature="e#4416#4417#0" expanded="true" />
+            <element signature="e#4445#4446#0" expanded="true" />
             <element signature="e#4321#4322#0" expanded="true" />
             <element signature="e#4352#4353#0" expanded="true" />
             <element signature="e#4598#4599#0" expanded="true" />
@@ -618,37 +692,6 @@
             <element signature="e#4780#4781#0" expanded="true" />
             <element signature="e#4812#4813#0" expanded="true" />
             <element signature="e#4840#4841#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/SortedCopyOnWriteArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding>
-            <element signature="e#2632#2633#0" expanded="true" />
-            <element signature="e#2676#2677#0" expanded="true" />
-            <element signature="e#2962#2963#0" expanded="true" />
-            <element signature="e#3007#3008#0" expanded="true" />
-            <element signature="e#3042#3043#0" expanded="true" />
-            <element signature="e#3088#3089#0" expanded="true" />
-            <element signature="e#3430#3431#0" expanded="true" />
-            <element signature="e#3495#3496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="58" column="88" selection-start-line="58" selection-start-column="88" selection-end-line="58" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3411#3412#0" expanded="true" />
-            <element signature="e#3451#3452#0" expanded="true" />
-            <element signature="e#3482#3483#0" expanded="true" />
-            <element signature="e#3521#3522#0" expanded="true" />
           </folding>
         </state>
       </provider>
