@@ -17,6 +17,7 @@ public class Player extends Entity {
     private static final int IDLE = 0;
     private static final int THRUSTING = 1;
     private static final int SHOOTING = 2;
+    private static final int DOWN = 5;
     private static final int BOTH = THRUSTING + SHOOTING;
     private int environmentState;
     private int actionState;
@@ -31,7 +32,7 @@ public class Player extends Entity {
     public Image getTexture(){
         double rot = Utility.angle(getVelX(),getVelY());
         int y = rotationMapper.mapInt(rot);
-        return getTexture(spriteCounter % 3,y);
+        return getTexture(spriteCounter % 4 == 3? 1:spriteCounter % 4,y);
     }
 
     public void action(){

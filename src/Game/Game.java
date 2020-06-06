@@ -1,12 +1,13 @@
 package Game;
 
-import Graphics.Renderer;
 import Logic.Engine;
-import Logic.Utility;
 
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 public class Game {
+
+    private static Random random = new Random();
 
     private Engine engine = new Engine();
 
@@ -20,14 +21,10 @@ public class Game {
         engine.registerKeyBinding(KeyEvent.VK_UP,()->player.setThrusting());
         engine.registerKeyBinding(KeyEvent.VK_SPACE,()->player.setShooting());
 
-        System.out.println("-> " + Utility.angle(1,0));
-        System.out.println("\\> " + Utility.angle(1,1));
-        System.out.println("v " + Utility.angle(0,1));
-        System.out.println("</ " + Utility.angle(-1,1));
-        System.out.println("<- " + Utility.angle(-1,0));
-        System.out.println("<\\ " + Utility.angle(-1,-1));
-        System.out.println("^ " + Utility.angle(0,-1));
-        System.out.println("/> " + Utility.angle(1,-1));
+        engine.add(new Sky());
+        for (int i = 0; i < 10; i++){
+            engine.add(new Cloud((double)random.nextInt(Engine.getWidth()),(double)random.nextInt(300)));
+        }
 
         engine.run();
     }

@@ -1,6 +1,10 @@
 package Logic;
 
 
+import Game.Player;
+import Game.Smoke;
+import Graphics.Renderer;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,7 +16,7 @@ import java.util.Arrays;
 
 public abstract class Entity {
     //TODO: Rotation: (rotate texture, adjust bounding box)
-    //TODO:
+
     private static BufferedImage nullSprite;
     private ArrayList<EntityComponent> components = new ArrayList<>();
 
@@ -22,7 +26,6 @@ public abstract class Entity {
     private double velX, velY;
     private String[] traits;
     private BufferedImage texture;
-    private int spriteWidth, spriteHeight;
 
     public Entity(double x, double y, int width, int height, String texturePath, int textureWidth, int textureHeight, String ... traits){
         this.x = x;
@@ -33,11 +36,11 @@ public abstract class Entity {
         try{
             nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
             texture = ImageIO.read(new File(texturePath));
+            texture = Utility.resize(texture,width,height,(double)width/textureWidth,(double)height/textureHeight);
+            texture = Renderer.makeCompatibleImage(texture);
         }catch(IOException e){
             e.printStackTrace();
         }
-        this.spriteWidth = textureWidth;
-        this.spriteHeight = textureHeight;
     }
 
     public Entity(double x, double y, int width, int height, String texturePath, String ... traits){
@@ -48,7 +51,7 @@ public abstract class Entity {
     protected Image getTexture(int x, int y){
         Image subTexture;
         try{
-            subTexture = texture.getSubimage(x*spriteWidth, y*spriteHeight, spriteWidth, spriteHeight);
+            subTexture = texture.getSubimage((int)(x*width), (int)(y*height), (int)(width), (int)(height));
         }catch(NullPointerException | RasterFormatException e){
             subTexture = nullSprite;
         }
@@ -132,6 +135,9 @@ public abstract class Entity {
     }
     public double getY(){
         return y;
+    }
+    public double getZ(){
+        return z;
     }
     public double getWidth(){
         return width;

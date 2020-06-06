@@ -1,5 +1,9 @@
 package Logic;
 
+import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+
 public class Utility {
 
     public static final int LEFT = 0, RIGHT = 1;
@@ -39,7 +43,6 @@ public class Utility {
         return Math.toDegrees(Math.atan2(y,x));
     }
 
-    //TODO: DOESN*T WORK!! May have something to do with the faulty angle-function
     public static double[] vector(double angle){
         angle = Math.toRadians(angle);
         double[] vec = new double[2];
@@ -47,6 +50,18 @@ public class Utility {
         vec[Engine.Y] = Math.sin(angle);
         return unitVector(vec[Engine.X],vec[Engine.Y]);
     }
+
+    public static BufferedImage resize(BufferedImage src, int w, int h, double sW, double sH) {
+        BufferedImage scaledImage = new BufferedImage((int)(src.getWidth()*sW), (int)(src.getHeight()*sH), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics2D = scaledImage.createGraphics();
+        AffineTransform xform = AffineTransform.getScaleInstance(sW,sH);
+        graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+                RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+        graphics2D.drawImage(src, xform, null);
+        graphics2D.dispose();
+        return scaledImage;
+    }
+
     public static Mapper getMapper(double from, double to){
         return new Mapper(0,from,0,to);
     }

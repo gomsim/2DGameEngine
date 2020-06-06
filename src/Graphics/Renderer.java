@@ -5,36 +5,42 @@ import Logic.Entity;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+
 
 public class Renderer extends JPanel {
 
-    private ArrayList<Entity> entities = new ArrayList<>();
+    private static final GraphicsConfiguration GFX_CONFIG = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+
+    //TODO: Behöver effektiviseras. Utmålning över hela skärmen är långsamt
+    public Renderer(){
+        setIgnoreRepaint(true);
+    }
 
     protected void paintComponent(Graphics graphics){
         super.paintComponent(graphics);
-        //Graphics2D g2d = (Graphics2D)graphics;
-        //g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         for (Entity entity: Engine.instance().getEntities()){
-            graphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), (int)entity.getWidth(), (int)entity.getHeight() , null);
+            if (insideCamera(entity))
+                graphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), null);
         }
     }
 
-    public void addEntity(Entity entity){
-        entities.add(entity);
-    }
-    public void removeEntity(Entity entity){
-        entities.remove(entity);
-    }
-    public void addAll(ArrayList<Entity> all){
-        for (Entity entity: all){
-            entities.add(entity);
-        }
-    }
-    public void removeAll(ArrayList<Entity> all){
-        for (Entity entity: all){
-            entities.remove(entity);
-        }
+    private boolean insideCamera(Entity entity){
+        return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getWidth()) ||
+                (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getHeight()));
     }
 
+    public static BufferedImage makeCompatibleImage(BufferedImage image){
+        if (image.getColorModel().equals(GFX_CONFIG.getColorModel())) {
+            return image;
+        }
+        final BufferedImage newImage = GFX_CONFIG.createCompatibleImage(image.getWidth(),image.getHeight(),image.getTransparency());
+
+        final Graphics2D g2d = (Graphics2D) newImage.getGraphics();
+        g2d.drawImage(image, 0, 0, null);
+        g2d.dispose();
+
+        return newImage;
+    }
 }
