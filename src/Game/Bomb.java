@@ -3,7 +3,7 @@ package Game;
 
 import Logic.Engine;
 import Logic.Entity;
-import Logic.GravityComponent;
+import Logic.Component.GravityComponent;
 import Logic.Utility;
 
 import java.awt.*;

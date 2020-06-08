@@ -1,9 +1,8 @@
 package Logic;
 
 
-import Game.Player;
-import Game.Smoke;
 import Graphics.Renderer;
+import Logic.Component.EntityComponent;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

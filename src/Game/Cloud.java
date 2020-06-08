@@ -1,6 +1,6 @@
 package Game;
 
-import Logic.CameraEffectComponent;
+import Logic.Component.CameraEffectComponent;
 import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;

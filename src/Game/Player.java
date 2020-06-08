@@ -1,6 +1,8 @@
 package Game;
 
 import Logic.*;
+import Logic.Component.CameraFocusComponent;
+import Logic.Component.GravityComponent;
 
 import java.awt.*;
 

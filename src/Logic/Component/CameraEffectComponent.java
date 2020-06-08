@@ -1,4 +1,8 @@
-package Logic;
+package Logic.Component;
+
+import Logic.Engine;
+import Logic.Entity;
+import Logic.Utility;
 
 public class CameraEffectComponent implements EntityComponent{
 
