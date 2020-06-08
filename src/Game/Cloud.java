@@ -1,5 +1,6 @@
 package Game;
 
+import Logic.CameraEffectComponent;
 import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;
@@ -11,6 +12,7 @@ public class Cloud extends Entity {
     public Cloud(double x, double y, double z){
         super(x,y,128*Utility.inverseSquare(z)*2,128*Utility.inverseSquare(z)*2,"GameResources/Cloud.png", 32, 32);
         setZ(z);
+        register(new CameraEffectComponent());
         setVelocity(-100*Utility.inverseSquare(z*10),0);
     }
 
@@ -20,8 +22,10 @@ public class Cloud extends Entity {
     }
 
     public void action(){
-        if (getX() < -getWidth())
-            setPosition(Engine.getWidth(),getY());
+        if (getX() < -getWidth() && getVelX() <= 0)
+            setPosition(Engine.getViewWidth(),getY());
+        else if (getX() > Engine.getViewWidth() && getVelX() >= 0)
+            setPosition(-getWidth(),getY());
     }
 
     public static Cloud createCloud(double x, double y){

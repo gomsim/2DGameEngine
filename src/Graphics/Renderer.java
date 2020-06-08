@@ -5,7 +5,6 @@ import Logic.Entity;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 
@@ -27,8 +26,8 @@ public class Renderer extends JPanel {
     }
 
     private boolean insideCamera(Entity entity){
-        return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getWidth()) ||
-                (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getHeight()));
+        return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getScreenWidth()) ||
+                (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getScreenHeight()));
     }
 
     public static BufferedImage makeCompatibleImage(BufferedImage image){

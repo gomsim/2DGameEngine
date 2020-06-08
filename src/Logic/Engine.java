@@ -28,9 +28,12 @@ public class Engine {
     public static final int X = 0, Y = 1;
     public static final int FPS = 60;
     private static final int EXISTENCE_MARGIN = 1000;
-    public static final int WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
-    public static final int HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+    public static final int VIEW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+    public static final int VIEW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+    public static final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+    public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
     public static final double GRAVITY = 0.2;
+    private double camVelX, camVelY;
     private SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
     public CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
     private HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
@@ -67,6 +70,8 @@ public class Engine {
                 if (entity.getX() < -EXISTENCE_MARGIN || entity.getX() > renderer.getWidth() + EXISTENCE_MARGIN || entity.getY() < -EXISTENCE_MARGIN || entity.getY() > renderer.getHeight() + EXISTENCE_MARGIN)
                     remove(entity);
             }
+
+            //TODO: Kan möjligtvis behöva förflytta föremål manuellt här istället för i deras tick ifall det som påverkar kameran inte ligger först i entities.
 
             //TakeInput
             CopyOnWriteArraySet<Integer> pressedKeys = keyInputBuffer;
@@ -110,12 +115,30 @@ public class Engine {
         return instance;
     }
 
-    public static int getWidth(){
-        return WIDTH;
+    public void moveCamera(double x, double y){
+        camVelX = x;
+        camVelY = y;
     }
-    public static int getHeight(){
-        return HEIGHT;
+    public double camMovementX(){
+        return camVelX;
     }
+    public double camMovementY(){
+        return camVelY;
+    }
+
+    public static int getScreenWidth(){
+        return SCREEN_WIDTH;
+    }
+    public static int getScreenHeight(){
+        return SCREEN_HEIGHT;
+    }
+    public static int getViewWidth(){
+        return VIEW_WIDTH;
+    }
+    public static int getViewHeight(){
+        return VIEW_HEIGHT;
+    }
+
     public SortedCopyOnWriteArrayList<Entity> getEntities(){
         return entities;
     }
@@ -129,12 +152,6 @@ public class Engine {
     }
     public void remove(Entity entity){
         toRemove.add(entity);
-    }
-    public void setFocus(Entity focus){
-        this.focus = focus;
-    }
-    public Entity getFocused(){
-        return focus;
     }
 
     private class ZComparator implements Comparator<Entity> {

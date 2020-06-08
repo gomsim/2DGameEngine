@@ -38,7 +38,7 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
             newRef = new Object[oldRef.length + toAdd.length];
             if (oldRef.length != 0){
                 for (int o = 0, n = 0; n < newRef.length; o++, n++){
-                    while (i < toAdd.length && (o >= oldRef.length || comparator.compare(toAdd[i],(E)oldRef[o]) < 0)){
+                    while (i < toAdd.length && (o >= oldRef.length || comparator.compare((E)oldRef[o],toAdd[i]) < 0)){
                         newRef[n++] = toAdd[i++];
                     }
                     if (o < oldRef.length)

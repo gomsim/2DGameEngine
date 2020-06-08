@@ -74,7 +74,6 @@ public abstract class Entity {
             component.apply(this);
         resolveMovement();
         action();
-        react(Engine.instance().getFocused());
     }
 
     public void resolveMovement(){
@@ -82,13 +81,16 @@ public abstract class Entity {
         y += velY;
     }
     public void action(){}
-    public void react(Entity focus){}
 
     public double[] getEdgePoint(double angle){
         return Utility.add(getCenter(), Utility.multiply(Utility.vector(angle),width/2));
     }
     public double[] getCenter(){
         return new double[] {x + width/2, y + height/2};
+    }
+    public void centerOn(double x, double y){
+        this.x = x - width/2;
+        this.y = y - height/2;
     }
     public double getCenterX(){
         return x + width/2;

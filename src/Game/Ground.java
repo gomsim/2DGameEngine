@@ -8,7 +8,7 @@ import java.awt.*;
 public class Ground extends Entity {
 
     public Ground(double x){
-        super(x, Engine.instance().getHeight()-64*4.5 +10,64,64,"GameResources/Ground.png", 32, 32);
+        super(x, Engine.instance().getScreenHeight()-64*4.5 +10,64,64,"GameResources/Ground.png", 32, 32);
     }
 
     public Image getTexture(){

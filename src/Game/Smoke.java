@@ -1,5 +1,6 @@
 package Game;
 
+import Logic.CameraEffectComponent;
 import Logic.Engine;
 import Logic.Entity;
 
@@ -12,6 +13,7 @@ public class Smoke extends Entity {
     public Smoke(double x, double y){
         super(x,y,24,24,"GameResources/SmokeAA.png",16,16);
         setVelocity(Math.random()*3,Math.random()*3);
+        register(new CameraEffectComponent());
     }
 
     public Image getTexture(){

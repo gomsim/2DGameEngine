@@ -1,9 +1,6 @@
 package Game;
 
-import Logic.Engine;
-import Logic.Entity;
-import Logic.GravityComponent;
-import Logic.Utility;
+import Logic.*;
 
 import java.awt.*;
 
@@ -25,6 +22,7 @@ public class Player extends Entity {
     public Player(int x, int y){
         super(x,y,32*3,32*3, "GameResources/Plane.png", 32, 32);
         register(new GravityComponent());
+        register(new CameraFocusComponent(Engine.getViewHeight()/2,500,150));
         setVelocity(maxSpeed,0);
     }
 
@@ -36,7 +34,7 @@ public class Player extends Entity {
 
     public void action(){
         //Uncommenting this changes the thrustforce based on your current speed.
-        //thrustForce = 0.06 * Utility.magnitude(getVelX(),getVelY());
+        thrustForce = 0.06 * Utility.magnitude(getVelX(),getVelY());
         if (bombCooldown != 0)
             bombCooldown--;
 
@@ -66,6 +64,7 @@ public class Player extends Entity {
         double[] perpendicular = Utility.perpendicular(getVelX(), getVelY(), Utility.LEFT);
         double[] thrust = Utility.multiply(Utility.unitVector(perpendicular[Engine.X],perpendicular[Engine.Y]),thrustForce);
         addVelocityCapped(thrust[Engine.X],thrust[Engine.Y],maxSpeed);
+
     }
     private void shoot(){
         if (bombCooldown == 0){

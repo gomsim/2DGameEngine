@@ -62,8 +62,12 @@ public class Utility {
         return scaledImage;
     }
 
+    /*
+     * Compensates for z^2 < 1
+     */
     public static double inverseSquare(double z){
-        return 1/(Math.pow(z,2));
+        double square = Math.pow(z,2);
+        return 1/(square < 1? 1:square);
     }
 
     public static Mapper getMapper(double from, double to){
