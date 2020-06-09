@@ -22,19 +22,18 @@ public class CameraFocusComponent implements EntityComponent{
     }
 
     public void apply(Entity owner){
-        double camMovX = owner.getX() + owner.getVelX() - focusX;
-        double camMovY = owner.getY() + owner.getVelY() - focusY;
+        double ownerDirX = owner.getX() + owner.getVelX() - focusX;
+        double ownerDirY = owner.getY() + owner.getVelY() - focusY;
 
-        double distance = Utility.magnitude(camMovX, camMovY);
+        double distance = Utility.magnitude(ownerDirX, ownerDirY);
         double overshoot = distance - focusRadius;
 
-        double[] unitMov = Utility.unitVector(camMovX, camMovY);
-
-        camMovX = unitMov[0] * overshoot;
-        camMovY = unitMov[1] * overshoot;
+        double[] unitDir = Utility.unitVector(ownerDirX, ownerDirY);
+        double camMovX = unitDir[0] * overshoot;
+        double camMovY = unitDir[1] * overshoot;
 
         Engine.instance().moveCamera(camMovX,camMovY);
-        owner.setPosition(owner.getX()-camMovX,owner.getY()-camMovY);
+        owner.setRelativePosition(-camMovX,-camMovY);
     }
 
 }

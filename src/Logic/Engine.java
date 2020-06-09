@@ -1,6 +1,5 @@
 package Logic;
 
-import Game.Sky;
 import Graphics.Renderer;
 import Graphics.Window;
 
@@ -8,9 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.PriorityBlockingQueue;
 
 public class Engine {
 
@@ -23,7 +20,6 @@ public class Engine {
     //TODO: Engine needs to keep entities in a sorted list, eg. PriorityQueue (med en extern comparator baserad på z)
 
     private static Engine instance;
-    private Entity focus;
     private Renderer renderer = new Renderer();
     public static final int X = 0, Y = 1;
     public static final int FPS = 60;
@@ -59,38 +55,34 @@ public class Engine {
             //add and remove
             entities.add(toAdd.toArray(new Entity[0]));
             toAdd.clear();
-            for (Entity entity: toRemove){
+            for (Entity entity : toRemove) {
                 entities.remove(entity);
             }
             toRemove.clear();
 
-            //Do all object's tick()
-            for (Entity entity: entities){
+            //Do all objects' tick()
+            for (Entity entity : entities) {
                 entity.tick();
-                if (entity.getX() < -EXISTENCE_MARGIN || entity.getX() > renderer.getWidth() + EXISTENCE_MARGIN || entity.getY() < -EXISTENCE_MARGIN || entity.getY() > renderer.getHeight() + EXISTENCE_MARGIN)
-                    remove(entity);
+                //if (entity.getX() < -EXISTENCE_MARGIN || entity.getX() > renderer.getWidth() + EXISTENCE_MARGIN || entity.getY() < -EXISTENCE_MARGIN || entity.getY() > renderer.getHeight() + EXISTENCE_MARGIN)
+                //    remove(entity);
             }
 
             //TODO: Kan möjligtvis behöva förflytta föremål manuellt här istället för i deras tick ifall det som påverkar kameran inte ligger först i entities.
 
-            //TakeInput
+            //Take user input here
             CopyOnWriteArraySet<Integer> pressedKeys = keyInputBuffer;
-            for (Integer key: pressedKeys){
-                switch (key){
-                    //all global functions before default
-                    default:
-                        if (inputFunctions.containsKey(key)){
-                            for (Runnable func: inputFunctions.get(key)){
-                                func.run();
-                            }
-                        }
+            for (Integer key : pressedKeys) {
+                if (inputFunctions.containsKey(key)) {
+                    for (Runnable func : inputFunctions.get(key)) {
+                        func.run();
+                    }
                 }
             }
 
+            //Collision detection loop here
+
             //Render new image
             renderer.repaint();
-
-            //Collision detection loop here
 
             //Checkc if delay or next tick
             delay = (nextTick - System.currentTimeMillis());

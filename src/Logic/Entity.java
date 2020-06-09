@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class Entity {
-    //TODO: Rotation: (rotate texture, adjust bounding box)
 
     private static BufferedImage nullSprite;
     private ArrayList<EntityComponent> components = new ArrayList<>();
@@ -36,7 +35,7 @@ public abstract class Entity {
             nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
             texture = ImageIO.read(new File(texturePath));
             texture = Utility.resize(texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
-            texture = Renderer.makeCompatibleImage(texture);
+            //texture = Renderer.makeCompatibleImage(texture);
         }catch(IOException e){
             e.printStackTrace();
         }

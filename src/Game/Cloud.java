@@ -22,9 +22,9 @@ public class Cloud extends Entity {
     }
 
     public void action(){
-        if (getX() < -getWidth() && getVelX() <= 0)
+        if (getX() < -getWidth())
             setPosition(Engine.getViewWidth(),getY());
-        else if (getX() > Engine.getViewWidth() && getVelX() >= 0)
+        else if (getX() > Engine.getViewWidth())
             setPosition(-getWidth(),getY());
     }
 
