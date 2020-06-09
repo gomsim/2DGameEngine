@@ -1,7 +1,7 @@
 package Logic;
 
 
-import Graphics.Renderer;
+import Graphics.Window;
 import Logic.Component.EntityComponent;
 
 import javax.imageio.ImageIO;
@@ -35,7 +35,7 @@ public abstract class Entity {
             nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
             texture = ImageIO.read(new File(texturePath));
             texture = Utility.resize(texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
-            //texture = Renderer.makeCompatibleImage(texture);
+            //texture = Window.makeCompatibleImage(texture);
         }catch(IOException e){
             e.printStackTrace();
         }

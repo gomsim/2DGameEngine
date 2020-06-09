@@ -1,6 +1,5 @@
 package Logic;
 
-import Graphics.Renderer;
 import Graphics.Window;
 
 import java.awt.*;
@@ -20,7 +19,7 @@ public class Engine {
     //TODO: Engine needs to keep entities in a sorted list, eg. PriorityQueue (med en extern comparator baserad på z)
 
     private static Engine instance;
-    private Renderer renderer = new Renderer();
+    private Window window;
     public static final int X = 0, Y = 1;
     public static final int FPS = 60;
     private static final int EXISTENCE_MARGIN = 1000;
@@ -42,7 +41,7 @@ public class Engine {
     }
 
     public void run(){
-        new Window(renderer, keyInputBuffer);
+        window = new Window(keyInputBuffer);
         boolean running = true;
         int tickInterval = 1000 / FPS;
         long nextTick;
@@ -82,7 +81,7 @@ public class Engine {
             //Collision detection loop here
 
             //Render new image
-            renderer.repaint();
+            window.render();
 
             //Checkc if delay or next tick
             delay = (nextTick - System.currentTimeMillis());
