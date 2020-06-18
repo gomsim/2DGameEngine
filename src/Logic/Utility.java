@@ -66,8 +66,10 @@ public class Utility {
      * Compensates for z^2 < 1
      */
     public static double inverseSquare(double z){
+        boolean positive = z >= 0;
+        z += positive? 1:(-1);
         double square = Math.pow(z,2);
-        return 1/(square < 1? 1:square);
+        return positive? 1/square:square;
     }
 
     public static Mapper getMapper(double from, double to){

@@ -16,8 +16,4 @@ public class Bomb extends Entity {
         double[] dir = Utility.unitVector(velX, velY);
         setVelocity(dir[Engine.X] * 18, dir[Engine.Y] * 18);
     }
-
-    public Image getTexture() {
-        return getTexture(0,0);
-    }
 }

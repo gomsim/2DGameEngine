@@ -12,10 +12,11 @@ public class Smoke extends Entity {
 
     public Smoke(double x, double y){
         super(x,y,24,24,"GameResources/SmokeAA.png",16,16);
-        setVelocity(Math.random()*3,Math.random()*3);
+        setVelocity(Math.random()*3-6,Math.random()*3);
         register(new CameraEffectComponent());
     }
 
+    @Override
     public Image getTexture(){
         int x;
         if (counter > 15)
@@ -24,7 +25,7 @@ public class Smoke extends Entity {
             x = 1;
         else
             x = 2;
-        return getTexture(x,0);
+        return getSubTexture(x,0);
     }
 
     public void action(){

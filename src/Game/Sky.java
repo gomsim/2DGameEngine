@@ -11,8 +11,4 @@ public class Sky extends Entity {
         super(0,0, Engine.getScreenWidth(),Engine.getScreenHeight(), "GameResources/Sky.png",480,270);
         setZ(Double.MAX_VALUE);
     }
-
-    public Image getTexture(){
-        return getTexture(0,0);
-    }
 }

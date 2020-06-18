@@ -2,7 +2,11 @@ package Logic;
 
 import Graphics.Window;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -19,9 +23,8 @@ public class Engine {
     //TODO: Engine needs to keep entities in a sorted list, eg. PriorityQueue (med en extern comparator baserad på z)
 
     private static Engine instance;
-    private Window window;
     public static final int X = 0, Y = 1;
-    public static final int FPS = 60;
+    private static final int FPS = 60;
     private static final int EXISTENCE_MARGIN = 1000;
     public static final int VIEW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
     public static final int VIEW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -30,18 +33,18 @@ public class Engine {
     public static final double GRAVITY = 0.2;
     private double camVelX, camVelY;
     private SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
-    public CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
+    private CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
     private HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
 
     private ArrayList<Entity> toAdd = new ArrayList<>();
     private ArrayList<Entity> toRemove = new ArrayList<>();
 
-    public Engine(){
+    private Engine(){
         instance = this;
     }
 
     public void run(){
-        window = new Window(keyInputBuffer);
+        Window window = new Window(keyInputBuffer);
         boolean running = true;
         int tickInterval = 1000 / FPS;
         long nextTick;
@@ -55,6 +58,7 @@ public class Engine {
             entities.add(toAdd.toArray(new Entity[0]));
             toAdd.clear();
             for (Entity entity : toRemove) {
+                entity.destroy();
                 entities.remove(entity);
             }
             toRemove.clear();
@@ -138,11 +142,44 @@ public class Engine {
             inputFunctions.put(key,new ArrayList<>());
         inputFunctions.get(key).add(func);
     }
+    public void removeKeyBinding(int key, Runnable func){
+        if (!inputFunctions.containsKey(key))
+            return;
+        inputFunctions.get(key).remove(func);
+    }
     public void add(Entity entity){
         toAdd.add(entity);
     }
     public void remove(Entity entity){
         toRemove.add(entity);
+    }
+
+    public void divideAndAdd(String texturePath, int tileSize, double entitySize, double offsetX, double offsetY, MultiConstructor constructor){
+        BufferedImage texture = null;
+        try{
+            texture = ImageIO.read(new File(texturePath));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        double sizeRatio = entitySize/tileSize;
+
+        for (int y = 0; y < texture.getHeight(); y += tileSize){
+            for (int x = 0; x < texture.getWidth(); x += tileSize){
+                BufferedImage subTexture = texture.getSubimage(x, y, tileSize, tileSize);
+                if (hasContent(subTexture))
+                    toAdd.add(constructor.construct(x * sizeRatio + offsetX,y * sizeRatio + offsetY,subTexture));
+            }
+        }
+    }
+    private boolean hasContent(BufferedImage image){
+        for (int y = 0; y < image.getHeight(); y++){
+            for (int x = 0; x < image.getWidth(); x++){
+                if (image.getRGB(x,y) >> 24 != 0x00)
+                    return true;
+            }
+        }
+        return false;
     }
 
     private class ZComparator implements Comparator<Entity> {

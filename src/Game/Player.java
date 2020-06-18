@@ -5,6 +5,7 @@ import Logic.Component.CameraFocusComponent;
 import Logic.Component.GravityComponent;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Player extends Entity {
 
@@ -26,12 +27,22 @@ public class Player extends Entity {
         register(new GravityComponent());
         register(new CameraFocusComponent(250,Engine.getViewHeight()/2-50,150));
         setVelocity(maxSpeed,0);
+
+        Engine.instance().registerKeyBinding(KeyEvent.VK_UP,()-> setThrusting());
+        Engine.instance().registerKeyBinding(KeyEvent.VK_SPACE,()-> setShooting());
     }
 
+    public void destroy(){
+        Engine.instance().removeKeyBinding(KeyEvent.VK_UP,()-> setThrusting());
+        Engine.instance().removeKeyBinding(KeyEvent.VK_SPACE,()-> setShooting());
+    }
+
+    @Override
     public Image getTexture(){
         double rot = Utility.angle(getVelX(),getVelY());
         int y = rotationMapper.mapInt(rot);
-        return getTexture(spriteCounter % 4 == 3? 1:spriteCounter % 4,y);
+        return getSubTexture(spriteCounter % 3, y);
+//        return getSubTexture(spriteCounter % 4 == 3? 1:spriteCounter % 4,y);
     }
 
     public void action(){

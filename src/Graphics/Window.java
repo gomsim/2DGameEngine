@@ -14,7 +14,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Window extends JFrame {
 
-    private static final GraphicsConfiguration GFX_CONFIG = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
     private BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
     private BlockingQueue<Image> forward = new ArrayBlockingQueue<>(2);
 
@@ -25,6 +24,7 @@ public class Window extends JFrame {
 
         setTitle("Death from Above");
         setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -36,25 +36,33 @@ public class Window extends JFrame {
 
         addKeyListener(new KeyInputListener(inputBuffer));
 
-        startBufferer();
-        startRenderer();
+        GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
-        setVisible(true);
+        try{
+            device.setFullScreenWindow(this);
+        }finally{
+            device.setFullScreenWindow(null);
+        }
+
+        startBufferThread();
+        startRenderThread();
     }
 
     public void render(){
-        synchronized (this){
+        //Uncomment to cap frame rate to 60 FPS
+        /*synchronized (this){
             notify();
-        }
+        }*/
     }
 
-    private void startBufferer(){
+    private void startBufferThread(){
         new Thread(()->{
             while(true){
                 try{
-                    synchronized (this){
+                    //Uncomment to cap frame rate to 60 FPS
+                    /*synchronized (this){
                         wait();
-                    }
+                    }*/
                     Image image = back.take();
                     Graphics bufferGraphics = image.getGraphics();
 
@@ -71,7 +79,7 @@ public class Window extends JFrame {
             }
         }).start();
     }
-    private void startRenderer(){
+    private void startRenderThread(){
         new Thread(()->{
             while(true){
                 try{
@@ -90,11 +98,12 @@ public class Window extends JFrame {
     }
 
     private boolean insideCamera(Entity entity){
-        return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getScreenWidth()) ||
-                (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getScreenHeight()));
+        return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
+                (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight()));
     }
 
     public static BufferedImage makeCompatibleImage(BufferedImage image){
+        GraphicsConfiguration GFX_CONFIG = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
         if (image.getColorModel().equals(GFX_CONFIG.getColorModel())) {
             return image;
         }

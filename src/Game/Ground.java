@@ -1,17 +1,13 @@
 package Game;
 
-import Logic.Engine;
 import Logic.Entity;
 
-import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Ground extends Entity {
 
-    public Ground(double x){
-        super(x, Engine.instance().getScreenHeight()-64*4.5 +10,64,64,"GameResources/Ground.png", 32, 32);
+    public Ground(double x, double y, BufferedImage texture){
+        super(x,y,64,64,texture,32,32);
     }
 
-    public Image getTexture(){
-        return getTexture(1,0);
-    }
 }

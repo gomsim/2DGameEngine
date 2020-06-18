@@ -1,7 +1,6 @@
 package Logic;
 
 
-import Graphics.Window;
 import Logic.Component.EntityComponent;
 
 import javax.imageio.ImageIO;
@@ -22,34 +21,57 @@ public abstract class Entity {
     private double z;
     private double width, height;
     private double velX, velY;
-    private String[] traits;
+    private String[] tags;
     private BufferedImage texture;
 
-    public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight, String ... traits){
+    public Entity(double x, double y, double width, double height, BufferedImage texture, int textureWidth, int textureHeight, String ... tags){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.traits = traits;
         try{
-            nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
-            texture = ImageIO.read(new File(texturePath));
-            texture = Utility.resize(texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
-            //texture = Window.makeCompatibleImage(texture);
+            if (nullSprite == null)
+                nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
+            this.texture = texture;
+            this.texture = Utility.resize(this.texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
+            //this.texture = Window.makeCompatibleImage(texture);
         }catch(IOException e){
             e.printStackTrace();
         }
+        this.tags = tags;
     }
 
-    public Entity(double x, double y, int width, int height, String texturePath, String ... traits){
-        this(x,y,width,height,texturePath,width,height,traits);
+    public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight, String ... tags){
+        this(x,y,width,height,loadTexture(texturePath),textureWidth,textureHeight,tags);
     }
 
-    public abstract Image getTexture();
-    protected Image getTexture(int x, int y){
+    public Entity(double x, double y, int width, int height, String texturePath, String ... tags){
+        this(x,y,width,height,texturePath,width,height,tags);
+    }
+
+    public Entity(double x, double y, int width, int height, BufferedImage texture, String ... tags){
+        this(x,y,width,height,texture,width,height,tags);
+    }
+
+    public void destroy(){}
+
+    private static BufferedImage loadTexture(String texturePath){
+        BufferedImage texture = null;
+        try{
+            texture = ImageIO.read(new File(texturePath));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return texture;
+    }
+
+    public Image getTexture(){
+        return getSubTexture(0,0);
+    }
+    protected Image getSubTexture(int x, int y){
         Image subTexture;
         try{
-            subTexture = texture.getSubimage((int)(x*width), (int)(y*height), (int)(width), (int)(height));
+            subTexture = texture.getSubimage(x*((int)width), y*((int)height), (int)width, (int)height);
         }catch(NullPointerException | RasterFormatException e){
             subTexture = nullSprite;
         }
@@ -145,8 +167,8 @@ public abstract class Entity {
     public double getHeight(){
         return height;
     }
-    public String[] getTraits(){
-        return traits;
+    public String[] getTags(){
+        return tags;
     }
     public boolean equals(Object object){
         if (!(object instanceof Entity))
@@ -154,6 +176,6 @@ public abstract class Entity {
         Entity otherEntity = (Entity)object;
         return x == otherEntity.x && y == otherEntity.y &&
                 width == otherEntity.width && height == otherEntity.width &&
-                Arrays.equals(traits,otherEntity.traits);
+                Arrays.equals(tags,otherEntity.tags);
     }
 }
