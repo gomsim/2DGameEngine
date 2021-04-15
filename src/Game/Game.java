@@ -25,13 +25,13 @@ public class Game {
             engine.add(Cloud.createCloud((double)random.nextInt(Engine.getScreenWidth()),(double)random.nextInt(900),true));
         }
 
-        engine.divideAndAdd(
-                "GameResources/Ground.png",
+        /*engine.divideAndAdd(
+                "GameResources/Level1.png",
                 32,
                 64,
                 0,
-                0,
-                (x,y,texture) -> new Ground(x,y,texture));
+                Engine.getViewHeight()-64,
+                (x,y,texture) -> new Ground(x,y,texture));*/
 
         engine.run();
     }

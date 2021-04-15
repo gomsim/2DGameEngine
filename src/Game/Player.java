@@ -12,8 +12,8 @@ public class Player extends Entity {
     private int spriteCounter;
     // Offset to make the plane look like it shifts its body movement slightly before turning in space
     private Utility.Mapper rotationMapper = Utility.getCircularMapper(-180,180,0,15, 0);//-0.2);
-    private double maxSpeed = 12;
-    private double thrustForce = maxSpeed * 0.06;
+    private double maxSpeed = 24;
+    private double thrustForce = maxSpeed * 0.03;
     private static final int IDLE = 0;
     private static final int THRUSTING = 1;
     private static final int SHOOTING = 2;

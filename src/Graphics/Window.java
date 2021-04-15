@@ -2,6 +2,7 @@ package Graphics;
 
 import Logic.Engine;
 import Logic.Entity;
+import Logic.SortedCopyOnWriteArrayList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class Window extends JFrame {
     private BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
     private BlockingQueue<Image> forward = new ArrayBlockingQueue<>(2);
 
-    public Window(CopyOnWriteArraySet inputBuffer){
+    public Window(CopyOnWriteArraySet<Integer> inputBuffer){
         int bufferSize = back.remainingCapacity();
         for (int i = 0; i < bufferSize; i++)
             back.add(new BufferedImage(Engine.getScreenWidth(),Engine.getScreenHeight(),BufferedImage.TYPE_INT_ARGB));
@@ -58,6 +59,8 @@ public class Window extends JFrame {
     private void startBufferThread(){
         new Thread(()->{
             while(true){
+                SortedCopyOnWriteArrayList<Entity> toRender = Engine.instance().getEntities();
+
                 try{
                     //Uncomment to cap frame rate to 60 FPS
                     /*synchronized (this){
@@ -66,7 +69,7 @@ public class Window extends JFrame {
                     Image image = back.take();
                     Graphics bufferGraphics = image.getGraphics();
 
-                    for (Entity entity: Engine.instance().getEntities()){
+                    for (Entity entity: toRender){
                         if (insideCamera(entity))
                             bufferGraphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), null);
                     }

@@ -30,7 +30,7 @@ public class Engine {
     public static final int VIEW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
     public static final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
     public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
-    public static final double GRAVITY = 0.2;
+    public static final double GRAVITY = 0.3;
     private double camVelX, camVelY;
     private SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
     private CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
@@ -49,8 +49,6 @@ public class Engine {
         int tickInterval = 1000 / FPS;
         long nextTick;
         long delay;
-        int i = 0;
-        long starTime = System.currentTimeMillis();
         while (running){
             nextTick = System.currentTimeMillis() + tickInterval;
 
@@ -63,11 +61,9 @@ public class Engine {
             }
             toRemove.clear();
 
-            //Do all objects' tick()
+            //Do all objects' tick
             for (Entity entity : entities) {
                 entity.tick();
-                //if (entity.getX() < -EXISTENCE_MARGIN || entity.getX() > renderer.getWidth() + EXISTENCE_MARGIN || entity.getY() < -EXISTENCE_MARGIN || entity.getY() > renderer.getHeight() + EXISTENCE_MARGIN)
-                //    remove(entity);
             }
 
             //TODO: Kan möjligtvis behöva förflytta föremål manuellt här istället för i deras tick ifall det som påverkar kameran inte ligger först i entities.
@@ -82,17 +78,13 @@ public class Engine {
                 }
             }
 
-            //Collision detection loop here
+            //Collision detection will go loop here
 
             //Render new image
             window.render();
 
-            //Checkc if delay or next tick
+            //Check if delay or next tick
             delay = (nextTick - System.currentTimeMillis());
-            /*if (++i % 60 == 0){
-                double time = (System.currentTimeMillis() - starTime);
-                System.out.println("FPS Logic: " + 1000/(time / i));
-            }*/
 
             if (delay > 0){
                 try {
