@@ -1,6 +1,6 @@
 A simple and easy to work with 2D game engine.
 
-![Gameplay](https://github.com/gomsim/2DGameEngine/demo/flygplansdemo.gif)
+![Gameplay](https://github.com/gomsim/2DGameEngine/blob/master/demo/flygplansdemo.gif)
 
 The only thing needed to create a simple game-like experience is to write a few Entity implementations, add them to the game engine, then start it up. Each new type of entity extends the abstract class Entity. Entity contains all lifecycle methods needed, such as update, destroy, and others used for scaling of textures, handling sprite sheets, etc.
 The flying experience included as an example in this repo consists only of three classes: Player, Sky and Cloud. These are simply added to the engine before it's started, as shown below, to create what's shown in the GIF.
