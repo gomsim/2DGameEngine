@@ -18,6 +18,9 @@ public class Window extends JFrame {
     private BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
     private BlockingQueue<Image> forward = new ArrayBlockingQueue<>(2);
 
+    private Thread renderThread;
+    private Thread bufferThread;
+
     public Window(CopyOnWriteArraySet<Integer> inputBuffer){
         int bufferSize = back.remainingCapacity();
         for (int i = 0; i < bufferSize; i++)
@@ -45,8 +48,15 @@ public class Window extends JFrame {
             device.setFullScreenWindow(null);
         }
 
-        startBufferThread();
-        startRenderThread();
+        bufferThread = startBufferThread();
+        renderThread = startRenderThread();
+    }
+
+    public void exit(){
+        renderThread.interrupt();
+        bufferThread.interrupt();
+
+        dispose();
     }
 
     public void render(){
@@ -56,12 +66,13 @@ public class Window extends JFrame {
         }*/
     }
 
-    private void startBufferThread(){
-        new Thread(()->{
-            while(true){
-                SortedCopyOnWriteArrayList<Entity> toRender = Engine.instance().getEntities();
+    private Thread startBufferThread(){
+        Thread thread = new Thread(()->{
 
-                try{
+            try{
+                while(true){
+                    SortedCopyOnWriteArrayList<Entity> toRender = Engine.instance().getEntities();
+
                     //Uncomment to cap frame rate to 60 FPS
                     /*synchronized (this){
                         wait();
@@ -76,16 +87,18 @@ public class Window extends JFrame {
 
                     forward.add(image);
                     bufferGraphics.dispose();
-                }catch(InterruptedException e){
-                    e.printStackTrace();
                 }
+            }catch(InterruptedException e){
+                System.out.println("BufferThread interrupted");
             }
-        }).start();
+        });
+        thread.start();
+        return thread;
     }
-    private void startRenderThread(){
-        new Thread(()->{
-            while(true){
-                try{
+    private Thread startRenderThread(){
+        Thread thread = new Thread(()->{
+            try{
+                while(true){
                     Image image = forward.take();
 
                     Graphics renderGraphics = getGraphics();
@@ -93,11 +106,14 @@ public class Window extends JFrame {
 
                     back.add(image);
                     renderGraphics.dispose();
-                }catch(InterruptedException e){
-                    e.printStackTrace();
+
                 }
+            }catch(InterruptedException e){
+                System.out.println("RenderThread interrupted");
             }
-        }).start();
+        });
+        thread.start();
+        return thread;
     }
 
     private boolean insideCamera(Entity entity){

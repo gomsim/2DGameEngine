@@ -2,6 +2,7 @@ package Game;
 
 import Logic.Engine;
 
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Game {
@@ -19,10 +20,10 @@ public class Game {
 
         engine.add(new Sky());
         for (int i = 0; i < 50; i++){
-            engine.add(Cloud.createCloud((double)random.nextInt(Engine.getScreenWidth()),(double)random.nextInt(300),false));
+            engine.add(Cloud.createCloud(random.nextInt(Engine.getScreenWidth()),random.nextInt(300),false));
         }
         for (int i = 0; i < 4; i++){
-            engine.add(Cloud.createCloud((double)random.nextInt(Engine.getScreenWidth()),(double)random.nextInt(900),true));
+            engine.add(Cloud.createCloud(random.nextInt(Engine.getScreenWidth()),random.nextInt(900),true));
         }
 
         /*engine.divideAndAdd(
@@ -32,6 +33,8 @@ public class Game {
                 0,
                 Engine.getViewHeight()-64,
                 (x,y,texture) -> new Ground(x,y,texture));*/
+
+        engine.registerKeyBinding(KeyEvent.VK_ESCAPE, engine::exit);
 
         engine.run();
     }

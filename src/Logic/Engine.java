@@ -31,6 +31,7 @@ public class Engine {
     public static final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
     public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
     public static final double GRAVITY = 0.3;
+    private boolean running = true;
     private double camVelX, camVelY;
     private SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
     private CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
@@ -45,7 +46,6 @@ public class Engine {
 
     public void run(){
         Window window = new Window(keyInputBuffer);
-        boolean running = true;
         int tickInterval = 1000 / FPS;
         long nextTick;
         long delay;
@@ -94,12 +94,18 @@ public class Engine {
                 }
             }
         }
+
+        window.exit();
     }
 
     public static Engine instance(){
         if (instance == null)
             instance = new Engine();
         return instance;
+    }
+
+    public void exit(){
+        running = false;
     }
 
     public void moveCamera(double x, double y){
