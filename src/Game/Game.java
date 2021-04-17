@@ -1,6 +1,7 @@
 package Game;
 
 import Logic.Engine;
+import Logic.TextureDivider;
 
 import java.awt.event.KeyEvent;
 import java.util.Random;
@@ -26,13 +27,13 @@ public class Game {
             engine.add(Cloud.createCloud(random.nextInt(Engine.getScreenWidth()),random.nextInt(900),true));
         }
 
-        /*engine.divideAndAdd(
-                "GameResources/Level1.png",
-                32,
-                64,
-                0,
-                Engine.getViewHeight()-64,
-                (x,y,texture) -> new Ground(x,y,texture));*/
+        /*engine.addAll(
+                TextureDivider.divideAndConstruct(
+                        "GameResources/Level1.png",
+                        0,
+                        Engine.getViewHeight()-64,
+                        Ground.class)
+        );*/
 
         engine.registerKeyBinding(KeyEvent.VK_ESCAPE, engine::exit);
 

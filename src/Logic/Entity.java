@@ -35,8 +35,8 @@ public abstract class Entity {
             this.texture = texture;
             this.texture = Utility.resize(this.texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
             //this.texture = Window.makeCompatibleImage(texture);
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(IOException | NullPointerException e){
+            this.texture = nullSprite;
         }
         this.tags = tags;
     }
@@ -51,6 +51,18 @@ public abstract class Entity {
 
     public Entity(double x, double y, int width, int height, BufferedImage texture, String ... tags){
         this(x,y,width,height,texture,width,height,tags);
+    }
+
+    public static <E extends Entity> E newInstance(){
+        throw new UnsupportedOperationException();
+    }
+
+    public static int entitySize(){
+        throw new UnsupportedOperationException();
+    }
+
+    public static int textureSize(){
+        throw new UnsupportedOperationException();
     }
 
     public void destroy(){}

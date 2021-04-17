@@ -1,13 +1,17 @@
 package Logic;
 
+import Game.Ground;
 import Graphics.Window;
 
 import javax.imageio.ImageIO;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -148,36 +152,11 @@ public class Engine {
     public void add(Entity entity){
         toAdd.add(entity);
     }
+    public void addAll(Collection<Entity> entities){
+        toAdd.addAll(entities);
+    }
     public void remove(Entity entity){
         toRemove.add(entity);
-    }
-
-    public void divideAndAdd(String texturePath, int tileSize, double entitySize, double offsetX, double offsetY, MultiConstructor constructor){
-        BufferedImage texture = null;
-        try{
-            texture = ImageIO.read(new File(texturePath));
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-
-        double sizeRatio = entitySize/tileSize;
-
-        for (int y = 0; y < texture.getHeight(); y += tileSize){
-            for (int x = 0; x < texture.getWidth(); x += tileSize){
-                BufferedImage subTexture = texture.getSubimage(x, y, tileSize, tileSize);
-                if (hasContent(subTexture))
-                    toAdd.add(constructor.construct(x * sizeRatio + offsetX,y * sizeRatio + offsetY,subTexture));
-            }
-        }
-    }
-    private boolean hasContent(BufferedImage image){
-        for (int y = 0; y < image.getHeight(); y++){
-            for (int x = 0; x < image.getWidth(); x++){
-                if (image.getRGB(x,y) >> 24 != 0x00)
-                    return true;
-            }
-        }
-        return false;
     }
 
     private class ZComparator implements Comparator<Entity> {
