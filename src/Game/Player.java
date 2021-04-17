@@ -28,13 +28,13 @@ public class Player extends Entity {
         register(new CameraFocusComponent(250,Engine.getViewHeight()/2-50,150));
         setVelocity(maxSpeed,0);
 
-        Engine.instance().registerKeyBinding(KeyEvent.VK_UP,()-> setThrusting());
-        Engine.instance().registerKeyBinding(KeyEvent.VK_SPACE,()-> setShooting());
+        Engine.instance().registerKeyBinding(KeyEvent.VK_UP, this::setThrusting);
+        Engine.instance().registerKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
     }
 
     public void destroy(){
-        Engine.instance().removeKeyBinding(KeyEvent.VK_UP,()-> setThrusting());
-        Engine.instance().removeKeyBinding(KeyEvent.VK_SPACE,()-> setShooting());
+        Engine.instance().removeKeyBinding(KeyEvent.VK_UP, this::setThrusting);
+        Engine.instance().removeKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
     }
 
     @Override

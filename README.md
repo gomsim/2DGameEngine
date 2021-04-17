@@ -41,7 +41,10 @@ Other components include CameraFocusComponent which makes the "camera" follow th
 
 KEY BINDING
 
-Key binding is done by registering them to the Engine singleton object via registerKeyBinding(KeyCode, Runnable). This is easiest done in the constructor of the Entity which will be affected by the key press. The Player class in the flying game registers bindings for thrust (arrowkey up) and shoot (spacebar) to methods defined in the class. 
+Key binding is done by registering them to the Engine singleton object via registerKeyBinding(KeyCode, Runnable). This is easiest done in the constructor of the Entity which will be affected by the key press. The Player class in the flying game registers bindings for thrust (arrowkey up) and shoot (spacebar) to methods defined in the class.
+
+    Engine.instance().registerKeyBinding(KeyEvent.VK_UP, this::setThrusting);
+    Engine.instance().registerKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
 
 SORTED COPY ON WRITE ARRAYLIST
 
