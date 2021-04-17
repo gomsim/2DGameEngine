@@ -2,23 +2,21 @@ A simple and easy to work with 2D game engine.
 
 ![Gameplay](https://github.com/gomsim/2DGameEngine/blob/master/demo/flygplansdemo.gif)
 
-The only thing needed to create a simple game-like experience is to write a few Entity-class implementations, add them to the game engine, then start it up. Each new type of Entity extends the abstract class Entity. Entity contains all lifecycle methods needed, such as update, destroy, and others used for scaling of textures, handling of sprite sheets, etc.
+With this Engine the only thing needed to create a simple game-like experience is to write a few Entity implementations, add them to the Engine, then start it up. Entity contains all lifecycle methods needed, such as update, destroy, and others used for scaling of textures, handling of sprite sheets, etc.
 The flying experience included as an example in this repo consists only of three main Entity classes: Player, Sky and Cloud. These are simply added to the engine before it's started up, as shown in the pseudo code below, to create what's shown in the GIF above.
 
     private void run(){
-        Player player = new Player();
-        engine.add(player);
-
+        engine.add(new Player());
         engine.add(new Sky());
 
         for (int i = 0; i < 50; i++){
             engine.add(
-                Cloud.createCloud("in background")
+                new Cloud("Background");
             );
         }
         for (int i = 0; i < 4; i++){
             engine.add(
-                Cloud.createCloud("in foreground")
+                new Cloud("Foreground");
             );
         }
 
