@@ -4,7 +4,7 @@ import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;
 
-public class CameraFocusComponent implements EntityComponent{
+public class CameraFocusComponent extends CameraComponent{
 
     private double focusRadius;
     private double focusX, focusY;
@@ -32,7 +32,7 @@ public class CameraFocusComponent implements EntityComponent{
         double camMovX = unitDir[0] * overshoot;
         double camMovY = unitDir[1] * overshoot;
 
-        Engine.instance().moveCamera(camMovX,camMovY);
+        moveCamera(camMovX,camMovY);
         owner.setRelativePosition(-camMovX,-camMovY);
     }
 

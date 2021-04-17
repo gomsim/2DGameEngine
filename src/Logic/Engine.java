@@ -36,7 +36,6 @@ public class Engine {
     public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
     public static final double GRAVITY = 0.3;
     private boolean running = true;
-    private double camVelX, camVelY;
     private final SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
     private final CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
     private final HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
@@ -110,17 +109,6 @@ public class Engine {
 
     public void exit(){
         running = false;
-    }
-
-    public void moveCamera(double x, double y){
-        camVelX = x;
-        camVelY = y;
-    }
-    public double camMovementX(){
-        return camVelX;
-    }
-    public double camMovementY(){
-        return camVelY;
     }
 
     public static int getScreenWidth(){

@@ -4,7 +4,7 @@ import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;
 
-public class CameraEffectComponent implements EntityComponent{
+public class CameraEffectComponent extends CameraComponent{
 
     private boolean affectsX, affectsY;
 
@@ -18,8 +18,8 @@ public class CameraEffectComponent implements EntityComponent{
 
     public void apply(Entity owner){
         double inverseSquare = Utility.inverseSquare(owner.getZ());
-        double x = Engine.instance().camMovementX() * inverseSquare;
-        double y = Engine.instance().camMovementY() * inverseSquare;
+        double x = camMovementX() * inverseSquare;
+        double y = camMovementY() * inverseSquare;
         owner.setRelativePosition(affectsX? -x:0, affectsY? -y:0);
     }
 }
