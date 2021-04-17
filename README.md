@@ -20,6 +20,7 @@ The flying experience included as an example in this repo consists only of three
     }
 
 The Engine is set up in such a way that all the bells and whistles of it can be utilized by setting up the Entity classes in certain ways. There are a few concepts that are important to know during the update cycle of the Engine, which will steer the behaviour of the Entities being placed into the world.
+<br></br>
 
 <h3>UPDATE-METHOD</h3>
 During each engine cycle every Entity's update-method will be called. It's a public method which is non-mandatory, but does nothing if not overridden. This method is the heart of the behaviour of the Entity. As an example, in the included flying game the update method of the Player-Entity will take care of counting down a bomb shooting cooldown, it will determine if it's time to release another puff of exhaust smoke from the rear of the player aircraft and it will determine the airplanes thrust based on user input. 
