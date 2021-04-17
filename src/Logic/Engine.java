@@ -33,9 +33,9 @@ public class Engine {
     public static final double GRAVITY = 0.3;
     private boolean running = true;
     private double camVelX, camVelY;
-    private SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
-    private CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
-    private HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
+    private final SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
+    private final CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
+    private final HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
 
     private ArrayList<Entity> toAdd = new ArrayList<>();
     private ArrayList<Entity> toRemove = new ArrayList<>();
@@ -66,7 +66,7 @@ public class Engine {
                 entity.tick();
             }
 
-            //TODO: Kan möjligtvis behöva förflytta föremål manuellt här istället för i deras tick ifall det som påverkar kameran inte ligger först i entities.
+            //TODO: Kan möjligtvis behöva förflytta föremål explicit här istället för i deras tick ifall det som påverkar kameran inte ligger först i entities.
 
             //Take user input here
             CopyOnWriteArraySet<Integer> pressedKeys = keyInputBuffer;

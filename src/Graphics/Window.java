@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class Window extends JFrame {
 
     private BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
-    private BlockingQueue<Image> forward = new ArrayBlockingQueue<>(2);
+    private BlockingQueue<Image> front = new ArrayBlockingQueue<>(2);
 
     private Thread renderThread;
     private Thread bufferThread;
@@ -26,13 +26,12 @@ public class Window extends JFrame {
         for (int i = 0; i < bufferSize; i++)
             back.add(new BufferedImage(Engine.getScreenWidth(),Engine.getScreenHeight(),BufferedImage.TYPE_INT_ARGB));
 
-        setTitle("Death from Above");
+        setTitle("2DGameEngine");
         setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
-        //setOpacity(0.3f); //For testing
 
         Toolkit tk= getToolkit();
         Cursor transparent = tk.createCustomCursor(tk.getImage(""), new Point(), "trans");
@@ -68,7 +67,6 @@ public class Window extends JFrame {
 
     private Thread startBufferThread(){
         Thread thread = new Thread(()->{
-
             try{
                 while(true){
                     SortedCopyOnWriteArrayList<Entity> toRender = Engine.instance().getEntities();
@@ -85,7 +83,7 @@ public class Window extends JFrame {
                             bufferGraphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), null);
                     }
 
-                    forward.add(image);
+                    front.add(image);
                     bufferGraphics.dispose();
                 }
             }catch(InterruptedException e){
@@ -99,14 +97,13 @@ public class Window extends JFrame {
         Thread thread = new Thread(()->{
             try{
                 while(true){
-                    Image image = forward.take();
+                    Image image = front.take();
 
                     Graphics renderGraphics = getGraphics();
                     renderGraphics.drawImage(image,0,0,null);
 
                     back.add(image);
                     renderGraphics.dispose();
-
                 }
             }catch(InterruptedException e){
                 System.out.println("RenderThread interrupted");
@@ -119,20 +116,6 @@ public class Window extends JFrame {
     private boolean insideCamera(Entity entity){
         return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
                 (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight()));
-    }
-
-    public static BufferedImage makeCompatibleImage(BufferedImage image){
-        GraphicsConfiguration GFX_CONFIG = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-        if (image.getColorModel().equals(GFX_CONFIG.getColorModel())) {
-            return image;
-        }
-        final BufferedImage newImage = GFX_CONFIG.createCompatibleImage(image.getWidth(),image.getHeight(),image.getTransparency());
-
-        final Graphics2D g2d = (Graphics2D) newImage.getGraphics();
-        g2d.drawImage(image, 0, 0, null);
-        g2d.dispose();
-
-        return newImage;
     }
 
     private static class KeyInputListener extends KeyAdapter{
