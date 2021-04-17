@@ -93,14 +93,14 @@ public abstract class Entity {
         for (EntityComponent component: components)
             component.apply(this);
         resolveMovement();
-        action();
+        update();
     }
 
     public void resolveMovement(){
         x += velX;
         y += velY;
     }
-    public void action(){}
+    public void update(){}
 
     public double[] getEdgePoint(double angle){
         return Utility.add(getCenter(), Utility.multiply(Utility.vector(angle),width/2));

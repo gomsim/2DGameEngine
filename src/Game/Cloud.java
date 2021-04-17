@@ -14,7 +14,7 @@ public class Cloud extends Entity {
         setVelocity(-6*Utility.inverseSquare(z),0);
     }
 
-    public void action(){
+    public void update(){
         if (getX() < -getWidth())
             setPosition(Engine.getViewWidth(),getY());
         else if (getX() > Engine.getViewWidth())

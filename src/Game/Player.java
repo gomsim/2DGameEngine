@@ -45,7 +45,7 @@ public class Player extends Entity {
 //        return getSubTexture(spriteCounter % 4 == 3? 1:spriteCounter % 4,y);
     }
 
-    public void action(){
+    public void update(){
         //Uncommenting this changes the thrustforce based on your current speed.
         thrustForce = 0.06 * Utility.magnitude(getVelX(),getVelY());
         if (bombCooldown != 0)

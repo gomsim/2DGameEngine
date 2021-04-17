@@ -28,7 +28,7 @@ public class Smoke extends Entity {
         return getSubTexture(x,0);
     }
 
-    public void action(){
+    public void update(){
         if (counter-- <= 0)
             Engine.instance().remove(this);
     }
