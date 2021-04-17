@@ -1,12 +1,11 @@
 package Logic.Component;
 
-import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;
 
 public class CameraEffectComponent extends CameraComponent{
 
-    private boolean affectsX, affectsY;
+    private final boolean affectsX, affectsY;
 
     public CameraEffectComponent(boolean affectsX, boolean affectsY){
         this.affectsX = affectsX;

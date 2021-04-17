@@ -1,13 +1,12 @@
 package Logic.Component;
 
-import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;
 
 public class CameraFocusComponent extends CameraComponent{
 
-    private double focusRadius;
-    private double focusX, focusY;
+    private final double focusRadius;
+    private final double focusX, focusY;
 
     public CameraFocusComponent(double focusX, double focusY, double focusRadius){
         this.focusX = focusX;

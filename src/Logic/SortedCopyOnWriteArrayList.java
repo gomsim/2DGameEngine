@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
 
     private static final int MAX_TRIES = 100;
-    private Comparator<E> comparator;
+    private final Comparator<E> comparator;
     private final AtomicReference<Object[]> elements = new AtomicReference<>(new Object[0]);
 
     public SortedCopyOnWriteArrayList(Comparator<E> comparator){

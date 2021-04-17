@@ -33,8 +33,8 @@ public class Engine {
     private final CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
     private final HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
 
-    private ArrayList<Entity> toAdd = new ArrayList<>();
-    private ArrayList<Entity> toRemove = new ArrayList<>();
+    private final ArrayList<Entity> toAdd = new ArrayList<>();
+    private final ArrayList<Entity> toRemove = new ArrayList<>();
 
     private Engine(){
         instance = this;

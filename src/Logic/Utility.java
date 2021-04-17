@@ -4,11 +4,15 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import static Logic.Utility.Direction.LEFT;
+
 public class Utility {
 
-    public static final int LEFT = 0, RIGHT = 1;
+    public enum Direction{
+        LEFT, RIGHT;
+    }
 
-    public static double[] perpendicular(double x, double y, int dir){
+    public static double[] perpendicular(double x, double y, Direction dir){
         if (dir == LEFT)
             return new double[] {y,-x};
         else

@@ -19,7 +19,7 @@ public abstract class Entity {
 
     private double x, y;
     private double z;
-    private double width, height;
+    private final double width, height;
     private double velX, velY;
     private String[] tags;
     private BufferedImage texture;

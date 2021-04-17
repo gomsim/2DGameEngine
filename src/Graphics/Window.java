@@ -15,11 +15,11 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Window extends JFrame {
 
-    private BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
-    private BlockingQueue<Image> front = new ArrayBlockingQueue<>(2);
+    private final BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
+    private final BlockingQueue<Image> front = new ArrayBlockingQueue<>(2);
 
-    private Thread renderThread;
-    private Thread bufferThread;
+    private final Thread renderThread;
+    private final Thread bufferThread;
 
     public Window(CopyOnWriteArraySet<Integer> inputBuffer){
         int bufferSize = back.remainingCapacity();
