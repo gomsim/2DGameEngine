@@ -10,14 +10,10 @@ The flying experience included as an example in this repo consists only of three
         engine.add(new Sky());
 
         for (int i = 0; i < 50; i++){
-            engine.add(
-                new Cloud("Background");
-            );
+            engine.add(new Cloud("Background"));
         }
         for (int i = 0; i < 4; i++){
-            engine.add(
-                new Cloud("Foreground");
-            );
+            engine.add(new Cloud("Foreground"));
         }
 
         engine.run();
