@@ -7,7 +7,7 @@ import Logic.Component.GravityComponent;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Player extends Entity {
+class Player extends Entity {
 
     private int spriteCounter;
     // Offset to make the plane look like it shifts its body movement slightly before turning in space

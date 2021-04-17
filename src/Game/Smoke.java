@@ -6,7 +6,7 @@ import Logic.Entity;
 
 import java.awt.*;
 
-public class Smoke extends Entity {
+class Smoke extends Entity {
 
     private int counter = 20;
 

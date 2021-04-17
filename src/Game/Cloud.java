@@ -5,7 +5,7 @@ import Logic.Engine;
 import Logic.Entity;
 import Logic.Utility;
 
-public class Cloud extends Entity {
+class Cloud extends Entity {
 
     public Cloud(double x, double y, double z){
         super(x,y,128*2*Utility.inverseSquare(z),128*2*Utility.inverseSquare(z),"GameResources/Cloud.png", 32, 32);

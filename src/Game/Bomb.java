@@ -6,7 +6,7 @@ import Logic.Entity;
 import Logic.Component.GravityComponent;
 import Logic.Utility;
 
-public class Bomb extends Entity {
+class Bomb extends Entity {
 
     public Bomb(double x, double y, double velX, double velY){
         super(x,y,16,16,"GameResources/Bomb.png",8,8);

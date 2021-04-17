@@ -5,7 +5,7 @@ import Logic.Engine;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-public class Game {
+class Game {
 
     private static Random random = new Random();
 

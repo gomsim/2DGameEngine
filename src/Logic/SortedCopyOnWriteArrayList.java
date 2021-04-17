@@ -1,11 +1,10 @@
 package Logic;
 
-import Game.Sky;
-
-import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 
 public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
 
