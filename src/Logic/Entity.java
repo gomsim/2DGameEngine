@@ -17,6 +17,7 @@ public abstract class Entity {
     private static BufferedImage nullSprite;
     private ArrayList<EntityComponent> components = new ArrayList<>();
 
+    private int ticksPassed;
     private double x, y;
     private double z;
     private final double width, height;
@@ -102,6 +103,7 @@ public abstract class Entity {
     }
 
     public void tick(){
+        ticksPassed++;
         for (EntityComponent component: components)
             component.apply(this);
         resolveMovement();
@@ -113,6 +115,10 @@ public abstract class Entity {
         y += velY;
     }
     public void update(){}
+
+    protected int ticksPassed(){
+        return ticksPassed;
+    }
 
     public double[] getEdgePoint(double angle){
         return Utility.add(getCenter(), Utility.multiply(Utility.vector(angle),width/2));

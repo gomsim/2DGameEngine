@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
 
 class Player extends Entity {
 
-    private int spriteCounter;
     // Offset to make the plane look like it shifts its body movement slightly before turning in space
     private Utility.Mapper rotationMapper = Utility.getCircularMapper(-180,180,0,15, 0);//-0.2);
     private double maxSpeed = 24;
@@ -41,8 +40,7 @@ class Player extends Entity {
     public Image getTexture(){
         double rot = Utility.angle(getVelX(),getVelY());
         int y = rotationMapper.mapInt(rot);
-        return getSubTexture(spriteCounter % 3, y);
-//        return getSubTexture(spriteCounter % 4 == 3? 1:spriteCounter % 4,y);
+        return getSubTexture(ticksPassed() % 3, y);
     }
 
     public void update(){
@@ -64,12 +62,11 @@ class Player extends Entity {
                 break;
         }
         //Note: More frequent smoke looks like the plane's damaged. Freq of 1 looks like near crash.
-        if (spriteCounter % 5 == 0){
+        if (ticksPassed() % 5 == 0){
             double[] spawnPoint = getEdgePoint(Utility.angle(-getVelX(),-getVelY()));
             Engine.instance().add(new Smoke(spawnPoint[Engine.X],spawnPoint[Engine.Y]));
         }
 
-        spriteCounter++;
         actionState = IDLE;
     }
 

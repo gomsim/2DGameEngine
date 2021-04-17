@@ -8,8 +8,6 @@ import java.awt.*;
 
 class Smoke extends Entity {
 
-    private int counter = 20;
-
     public Smoke(double x, double y){
         super(x,y,24,24,"GameResources/SmokeAA.png",16,16);
         setVelocity(Math.random()*3-6,Math.random()*3);
@@ -19,9 +17,9 @@ class Smoke extends Entity {
     @Override
     public Image getTexture(){
         int x;
-        if (counter > 15)
+        if (ticksPassed() < 5)
             x = 0;
-        else if (counter > 5)
+        else if (ticksPassed() < 15)
             x = 1;
         else
             x = 2;
@@ -29,7 +27,7 @@ class Smoke extends Entity {
     }
 
     public void update(){
-        if (counter-- <= 0)
+        if (ticksPassed() >= 20)
             Engine.instance().remove(this);
     }
 }
