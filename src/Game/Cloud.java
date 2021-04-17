@@ -10,7 +10,7 @@ public class Cloud extends Entity {
     public Cloud(double x, double y, double z){
         super(x,y,128*2*Utility.inverseSquare(z),128*2*Utility.inverseSquare(z),"GameResources/Cloud.png", 32, 32);
         setZ(z);
-        register(new CameraEffectComponent());
+        add(new CameraEffectComponent());
         setVelocity(-6*Utility.inverseSquare(z),0);
     }
 

@@ -1,7 +1,6 @@
 package Game;
 
 import Logic.Engine;
-import Logic.TextureDivider;
 
 import java.awt.event.KeyEvent;
 import java.util.Random;
@@ -35,7 +34,7 @@ public class Game {
                         Ground.class)
         );*/
 
-        engine.registerKeyBinding(KeyEvent.VK_ESCAPE, engine::exit);
+        engine.addKeyBinding(KeyEvent.VK_ESCAPE, engine::exit);
 
         engine.run();
     }

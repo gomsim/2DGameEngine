@@ -24,12 +24,12 @@ public class Player extends Entity {
 
     public Player(int x, int y){
         super(x,y,32*3,32*3, "GameResources/Plane.png", 32, 32);
-        register(new GravityComponent());
-        register(new CameraFocusComponent(250,Engine.getViewHeight()/2-50,150));
+        add(new GravityComponent());
+        add(new CameraFocusComponent(250,Engine.getViewHeight()/2-50,150));
         setVelocity(maxSpeed,0);
 
-        Engine.instance().registerKeyBinding(KeyEvent.VK_UP, this::setThrusting);
-        Engine.instance().registerKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
+        Engine.instance().addKeyBinding(KeyEvent.VK_UP, this::setThrusting);
+        Engine.instance().addKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
     }
 
     public void destroy(){

@@ -16,7 +16,7 @@ public class Ground extends Entity {
 
     public Ground(double x, double y, BufferedImage texture){
         super(x,y,ENTITY_SIZE,ENTITY_SIZE,texture,TEXTURE_SIZE,TEXTURE_SIZE);
-        register(new CameraEffectComponent());
+        add(new CameraEffectComponent());
     }
 
 

@@ -35,17 +35,17 @@ The Mapper is a utility class crucial for texture picking. It's a simple, effici
 <br></br>
 
 <h3>ENTITY COMPONENTS</h3>
-In order to make the Engine as flexible as possible I wanted less functionality to be hard coded into the Engine and instead let any functionality be added in a modular fashion. Thus the EntityComponent. The EntityComponent is an interface that provides a way to give many Entities certain properties. One such simple example is gravity. The GravityComponent implements the EntityComponent interface and gives Entitities the ability to experience gravity. This is done by, upon construction of an Entity, registering a new GravityComponent to it. 
+In order to make the Engine as flexible as possible I wanted less functionality to be hard coded into the Engine and instead let any functionality be added in a modular fashion. Thus the EntityComponent. The EntityComponent is an interface that provides a way to give many Entities certain properties. One such simple example is gravity. The GravityComponent implements the EntityComponent interface and gives Entitities the ability to experience gravity. This is done by, upon construction of an Entity, adding a new GravityComponent to it. 
 The Entity will then be pulled down with a certain force every Engine update cycle. EntityComponent is a simple functional interface with a method apply(Entity). The Entity supplied to the method is the owner Entity, upon which the effect of the component will be applied.
-Other components include CameraFocusComponent which makes the "camera" follow the Entity upon which is is registered, CameraEffectComponent, which makes the Entity react to camera movement (used by the clouds in the flying game, and not the sky, for example) and a PixelColliderComponent to make Entities use pixel collision detection. In this specific implementation of the CameraEffectComponent, the Entities' z-property determines the magnitude of the movement effect, creating a convincing parallax effect.
+Other components include CameraFocusComponent which makes the "camera" follow the Entity upon which is is added, CameraEffectComponent, which makes the Entity react to camera movement (used by the clouds in the flying game, and not the sky, for example) and a PixelColliderComponent to make Entities use pixel collision detection. In this specific implementation of the CameraEffectComponent, the Entities' z-property determines the magnitude of the movement effect, creating a convincing parallax effect.
 <br></br>
 
 <h3>KEY BINDING</h3>
-Key binding is done by registering them to the Engine singleton object via registerKeyBinding(KeyCode, Runnable). This is easiest done in the constructor of the Entity which will be affected by the key press. The Player class in the flying game registers bindings for thrust (arrowkey up) and shoot (spacebar) to methods defined in the class.
+Key binding is done by adding them to the Engine singleton object via addKeyBinding(KeyCode, Runnable). This is easiest done in the constructor of the Entity which will be affected by the key press. The Player class in the flying game adds bindings for thrust (arrowkey up) and shoot (spacebar) to methods defined in the class.
 <br></br>
 
-    Engine.instance().registerKeyBinding(KeyEvent.VK_UP, this::setThrusting);
-    Engine.instance().registerKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
+    Engine.instance().addKeyBinding(KeyEvent.VK_UP, this::setThrusting);
+    Engine.instance().addKeyBinding(KeyEvent.VK_SPACE, this::setShooting);
 
 <h3>SORTED COPY ON WRITE ARRAYLIST</h3>
 For rendering and managing of all the entities in the world I needed an efficient, thread safe, sorted data structure. Sorted, because entities can define their own z-property, determining their position depth-wise. A sorted data structure ensures entities are rendered in the correct order, with the closest entities last; Efficient, because the structure will be read from, and written to, several times per update cycle; And thread safe because it will be accessed by three processes simultaneously. One process handling the engine update cycle, which will add and remove entities from the data structure, and two processes which handles rendering and which will only read from the structure.

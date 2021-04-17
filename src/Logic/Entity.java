@@ -90,10 +90,10 @@ public abstract class Entity {
         return subTexture;
     }
 
-    public void register(EntityComponent component){
+    public void add(EntityComponent component){
         components.add(component);
     }
-    public void deregister(EntityComponent component){
+    public void remove(EntityComponent component){
         components.remove(component);
     }
 

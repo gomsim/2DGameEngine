@@ -127,7 +127,7 @@ public class Engine {
     public SortedCopyOnWriteArrayList<Entity> getEntities(){
         return entities;
     }
-    public void registerKeyBinding(int key, Runnable func){
+    public void addKeyBinding(int key, Runnable func){
         if (!inputFunctions.containsKey(key))
             inputFunctions.put(key,new ArrayList<>());
         inputFunctions.get(key).add(func);
