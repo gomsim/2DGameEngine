@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 class Player extends Entity {
 
-    // Offset to make the plane look like it shifts its body movement slightly before turning in space
+    // Offset can be added to make the plane look like it shifts its body movement slightly before turning
     private Utility.Mapper rotationMapper = Utility.getCircularMapper(-180,180,0,15, 0);//-0.2);
     private double maxSpeed = 24;
     private double thrustForce = maxSpeed * 0.03;
@@ -44,7 +44,7 @@ class Player extends Entity {
     }
 
     public void update(){
-        //Uncommenting this changes the thrustforce based on your current speed.
+        //Commenting this away to not change the thrustforce based on your current speed.
         thrustForce = 0.06 * Utility.magnitude(getVelX(),getVelY());
         if (bombCooldown != 0)
             bombCooldown--;
