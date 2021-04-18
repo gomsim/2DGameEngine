@@ -164,7 +164,7 @@ public abstract class Entity {
         velX += x;
         velY += y;
     }
-    public void addVelocityCapped(double x, double y, double cap){
+    public void addVelocity(double x, double y, double cap){
         double magRatio = cap / Utility.magnitude(velX, velY);
         velX = (velX + x) * magRatio;
         velY = (velY + y) * magRatio;

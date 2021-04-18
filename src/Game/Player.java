@@ -73,8 +73,7 @@ class Player extends Entity {
     private void thrust(){
         double[] perpendicular = Utility.perpendicular(getVelX(), getVelY(), Utility.Direction.LEFT);
         double[] thrust = Utility.multiply(Utility.unitVector(perpendicular[Engine.X],perpendicular[Engine.Y]),thrustForce);
-        addVelocityCapped(thrust[Engine.X],thrust[Engine.Y],maxSpeed);
-
+        addVelocity(thrust[Engine.X],thrust[Engine.Y],maxSpeed);
     }
     private void shoot(){
         if (bombCooldown == 0){
