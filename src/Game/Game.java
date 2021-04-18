@@ -27,13 +27,13 @@ class Game {
             engine.add(Cloud.createCloud(RANDOM.nextInt(Engine.getScreenWidth()), Engine.getScreenHeight()/2 -50 + RANDOM.nextInt(100),true));
         }
 
-        engine.addAll(
+        /*engine.addAll(
                 TextureDivider.divideAndConstruct(
                         "GameResources/Level1.png",
                         0,
                         Engine.getViewHeight()*1.5,
                         Ground.class)
-        );
+        );*/
 
         engine.addKeyBinding(KeyEvent.VK_ESCAPE, engine::exit);
         engine.setName("Flight'n'bump");
