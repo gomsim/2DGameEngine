@@ -5,7 +5,7 @@ import Logic.Entity;
 
 import java.awt.image.BufferedImage;
 
-class Ground extends Entity {
+public class Ground extends Entity {
 
     private static final int TEXTURE_SIZE = 32;
     private static final int ENTITY_SIZE = 64*2;

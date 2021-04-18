@@ -9,17 +9,16 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.ArrayList;
+import java.util.concurrent.*;
 
 public class Window extends JFrame {
 
     private final BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
     private final BlockingQueue<Image> front = new ArrayBlockingQueue<>(2);
 
-    private final Thread renderThread;
-    private final Thread bufferThread;
+    private final Thread renderThread = new Thread(new Bufferer(),"bufferThread");
+    private final Thread bufferThread = new Thread(new Renderer(),"renderThread");
 
     public Window(CopyOnWriteArraySet<Integer> inputBuffer){
         int bufferSize = back.remainingCapacity();
@@ -47,8 +46,8 @@ public class Window extends JFrame {
             device.setFullScreenWindow(null);
         }
 
-        bufferThread = startBufferThread();
-        renderThread = startRenderThread();
+        bufferThread.start();
+        renderThread.start();
     }
 
     public void exit(){
@@ -65,8 +64,12 @@ public class Window extends JFrame {
         }*/
     }
 
-    private Thread startBufferThread(){
-        Thread thread = new Thread(()->{
+    private class Bufferer implements Runnable{
+
+        private static final int NUM_THREADS = 8;
+        private final ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
+
+        public void run(){
             try{
                 while(true){
                     SortedCopyOnWriteArrayList<Entity> toRender = Engine.instance().getEntities();
@@ -79,8 +82,27 @@ public class Window extends JFrame {
                     Graphics bufferGraphics = image.getGraphics();
 
                     for (Entity entity: toRender){
-                        if (insideCamera(entity))
-                            bufferGraphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), null);
+                        if (insideCamera(entity)){
+                            Image entityImg = entity.getTexture();
+
+                            int imagePortion = entityImg.getHeight(null)/NUM_THREADS;
+                            int entityPortion = (int)entity.getHeight()/NUM_THREADS;
+                            int imageWidth = entityImg.getWidth(null);
+                            int entityWidth = (int)entity.getWidth();
+                            int entityX = (int)entity.getX();
+                            int entityY = (int)entity.getY();
+
+                            java.util.List<Callable<Boolean>> tasks = new ArrayList<>();
+                            for (int i = 0; i < NUM_THREADS; i++){
+                                final int count = i;
+                                tasks.add(() -> bufferGraphics.drawImage(entityImg,
+                                        entityX,entityY+entityPortion*count, entityX+entityWidth, entityY+entityPortion*(count+1),
+                                        0,imagePortion*count, imageWidth, imagePortion*(count+1),null));
+                            }
+
+                            pool.invokeAll(tasks);
+                            //bufferGraphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), null);
+                        }
                     }
 
                     front.add(image);
@@ -89,18 +111,23 @@ public class Window extends JFrame {
             }catch(InterruptedException e){
                 System.out.println("BufferThread interrupted");
             }
-        });
-        thread.start();
-        return thread;
+        }
+        
+        private boolean insideCamera(Entity entity){
+            return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
+                    (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight()));
+        }
     }
-    private Thread startRenderThread(){
-        Thread thread = new Thread(()->{
+
+    private class Renderer implements Runnable{
+
+        public void run(){
             try{
                 while(true){
                     Image image = front.take();
-
                     Graphics renderGraphics = getGraphics();
-                    renderGraphics.drawImage(image,0,0,null);
+
+                    renderGraphics.drawImage(image, 0,0, null);
 
                     back.add(image);
                     renderGraphics.dispose();
@@ -108,14 +135,7 @@ public class Window extends JFrame {
             }catch(InterruptedException e){
                 System.out.println("RenderThread interrupted");
             }
-        });
-        thread.start();
-        return thread;
-    }
-
-    private boolean insideCamera(Entity entity){
-        return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
-                (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight()));
+        }
     }
 
     private static class KeyInputListener extends KeyAdapter{
