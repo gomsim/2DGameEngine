@@ -20,12 +20,12 @@ public class Window extends JFrame {
     private final Thread renderThread = new Thread(new Bufferer(),"bufferThread");
     private final Thread bufferThread = new Thread(new Renderer(),"renderThread");
 
-    public Window(CopyOnWriteArraySet<Integer> inputBuffer){
+    public Window(CopyOnWriteArraySet<Integer> inputBuffer, String name){
         int bufferSize = back.remainingCapacity();
         for (int i = 0; i < bufferSize; i++)
             back.add(new BufferedImage(Engine.getScreenWidth(),Engine.getScreenHeight(),BufferedImage.TYPE_INT_ARGB));
 
-        setTitle("2DGameEngine");
+        setTitle(name != null && !name.isEmpty() ? name:"2DGameEngine");
         setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         setResizable(false);
         setLocationRelativeTo(null);

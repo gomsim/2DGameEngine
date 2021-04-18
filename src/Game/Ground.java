@@ -30,7 +30,7 @@ public class Ground extends Entity {
     }
 
 
-    public static int entitySize() {
+    public static double entitySize() {
         return ENTITY_SIZE;
     }
 }

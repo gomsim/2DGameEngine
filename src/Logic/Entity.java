@@ -58,7 +58,7 @@ public abstract class Entity {
         throw new UnsupportedOperationException();
     }
 
-    public static int entitySize(){
+    public static double entitySize(){
         throw new UnsupportedOperationException();
     }
 

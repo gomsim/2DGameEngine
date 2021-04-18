@@ -29,6 +29,7 @@ public class Engine {
     public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
     public static final double GRAVITY = 0.3;
     private boolean running = true;
+    private String name;
     private final SortedCopyOnWriteArrayList<Entity> entities = new SortedCopyOnWriteArrayList<>(new ZComparator());
     private final CopyOnWriteArraySet<Integer> keyInputBuffer = new CopyOnWriteArraySet<>();
     private final HashMap<Integer,ArrayList<Runnable>> inputFunctions = new HashMap<>();
@@ -41,7 +42,7 @@ public class Engine {
     }
 
     public void run(){
-        Window window = new Window(keyInputBuffer);
+        Window window = new Window(keyInputBuffer, name);
         int tickInterval = 1000 / FPS;
         long nextTick;
         long delay;
@@ -92,6 +93,10 @@ public class Engine {
         }
 
         window.exit();
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public static Engine instance(){

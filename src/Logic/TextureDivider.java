@@ -20,12 +20,12 @@ public class TextureDivider {
             e.printStackTrace();
         }
 
-        int textureSize = 0;
-        double entitySize = 0;
+        int textureSize;
+        double entitySize;
 
         try{
             textureSize = (int) toConstruct.getMethod("textureSize").invoke(null);
-            entitySize = (int) toConstruct.getMethod("entitySize").invoke(null);
+            entitySize = (double) toConstruct.getMethod("entitySize").invoke(null);
         }catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e){
             throw new UnsupportedOperationException(e);
         }
