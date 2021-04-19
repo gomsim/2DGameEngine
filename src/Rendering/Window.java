@@ -1,4 +1,4 @@
-package Graphics;
+package Rendering;
 
 import Logic.Engine;
 import Logic.Entity;

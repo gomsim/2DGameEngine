@@ -1,6 +1,6 @@
 package Logic;
 
-import Graphics.Window;
+import Rendering.Window;
 
 import java.awt.*;
 import java.util.ArrayList;
