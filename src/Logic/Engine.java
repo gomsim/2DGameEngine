@@ -123,9 +123,11 @@ public class Engine {
         inputFunctions.get(key).add(func);
     }
     public void removeKeyBinding(int key, Runnable func){
-        if (!inputFunctions.containsKey(key))
-            return;
-        inputFunctions.get(key).remove(func);
+        if (inputFunctions.containsKey(key)){
+            inputFunctions.get(key).remove(func);
+            if (inputFunctions.get(key).isEmpty())
+                inputFunctions.remove(key);
+        }
     }
     public void add(Entity entity){
         toAdd.add(entity);
