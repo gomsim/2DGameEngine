@@ -19,6 +19,7 @@ public class Window extends JFrame {
 
     private final Thread renderThread = new Thread(new Bufferer(),"bufferThread");
     private final Thread bufferThread = new Thread(new Renderer(),"renderThread");
+    private final KeyInputListener keyInputListener;
 
     public Window(CopyOnWriteArraySet<Integer> inputBuffer, String name){
         int bufferSize = back.remainingCapacity();
@@ -36,7 +37,7 @@ public class Window extends JFrame {
         Cursor transparent = tk.createCustomCursor(tk.getImage(""), new Point(), "trans");
         setCursor(transparent);
 
-        addKeyListener(new KeyInputListener(inputBuffer));
+        addKeyListener(keyInputListener = new KeyInputListener(inputBuffer));
 
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
@@ -53,6 +54,7 @@ public class Window extends JFrame {
     public void exit(){
         renderThread.interrupt();
         bufferThread.interrupt();
+        removeKeyListener(keyInputListener);
 
         dispose();
     }
@@ -109,6 +111,7 @@ public class Window extends JFrame {
                     bufferGraphics.dispose();
                 }
             }catch(InterruptedException e){
+                pool.shutdownNow();
                 System.out.println("BufferThread interrupted");
             }
         }

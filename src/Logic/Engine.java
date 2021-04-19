@@ -12,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class Engine {
 
     private static Engine instance;
-    
+
     private static final int FPS = 60;
     public static final int VIEW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
     public static final int VIEW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
