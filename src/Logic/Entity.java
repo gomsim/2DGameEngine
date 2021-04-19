@@ -22,10 +22,9 @@ public abstract class Entity {
     private double z;
     private final double width, height;
     private double velX, velY;
-    private String[] tags;
     private BufferedImage texture;
 
-    public Entity(double x, double y, double width, double height, BufferedImage texture, int textureWidth, int textureHeight, String ... tags){
+    public Entity(double x, double y, double width, double height, BufferedImage texture, int textureWidth, int textureHeight){
         this.x = x;
         this.y = y;
         this.width = width;
@@ -37,7 +36,6 @@ public abstract class Entity {
         }catch(NullPointerException e){
             this.texture = nullSprite;
         }
-        this.tags = tags;
     }
 
     private static BufferedImage loadNullSprite(){
@@ -50,16 +48,16 @@ public abstract class Entity {
         return nullSprite;
     }
 
-    public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight, String ... tags){
-        this(x,y,width,height,loadTexture(texturePath),textureWidth,textureHeight,tags);
+    public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight){
+        this(x,y,width,height,loadTexture(texturePath),textureWidth,textureHeight);
     }
 
-    public Entity(double x, double y, int width, int height, String texturePath, String ... tags){
-        this(x,y,width,height,texturePath,width,height,tags);
+    public Entity(double x, double y, int width, int height, String texturePath){
+        this(x,y,width,height,texturePath,width,height);
     }
 
-    public Entity(double x, double y, int width, int height, BufferedImage texture, String ... tags){
-        this(x,y,width,height,texture,width,height,tags);
+    public Entity(double x, double y, int width, int height, BufferedImage texture){
+        this(x,y,width,height,texture,width,height);
     }
 
     public static <E extends Entity> E newInstance(){
@@ -193,15 +191,7 @@ public abstract class Entity {
     public double getHeight(){
         return height;
     }
-    public String[] getTags(){
-        return tags;
-    }
     public boolean equals(Object object){
-        if (!(object instanceof Entity))
-            return false;
-        Entity otherEntity = (Entity)object;
-        return x == otherEntity.x && y == otherEntity.y &&
-                width == otherEntity.width && height == otherEntity.width &&
-                Arrays.equals(tags,otherEntity.tags);
+        return this == object;
     }
 }
