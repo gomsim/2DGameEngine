@@ -139,7 +139,7 @@ public class Engine {
         toRemove.add(entity);
     }
 
-    private class ZComparator implements Comparator<Entity> {
+    private static class ZComparator implements Comparator<Entity> {
         public int compare(Entity first, Entity second){
             return Double.compare(first.getZ(),second.getZ());
         }

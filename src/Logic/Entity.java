@@ -14,8 +14,8 @@ import java.util.Arrays;
 
 public abstract class Entity {
 
-    private static BufferedImage nullSprite;
-    private ArrayList<EntityComponent> components = new ArrayList<>();
+    private static final BufferedImage nullSprite = loadNullSprite();
+    private final ArrayList<EntityComponent> components = new ArrayList<>();
 
     private int ticksPassed;
     private double x, y;
@@ -31,15 +31,23 @@ public abstract class Entity {
         this.width = width;
         this.height = height;
         try{
-            if (nullSprite == null)
-                nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
             this.texture = texture;
             this.texture = Utility.resize(this.texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
             //this.texture = Window.makeCompatibleImage(texture);
-        }catch(IOException | NullPointerException e){
+        }catch(NullPointerException e){
             this.texture = nullSprite;
         }
         this.tags = tags;
+    }
+
+    private static BufferedImage loadNullSprite(){
+        BufferedImage nullSprite = null;
+        try{
+            nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return nullSprite;
     }
 
     public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight, String ... tags){
