@@ -12,6 +12,8 @@ public class Utility {
         LEFT, RIGHT;
     }
 
+    public static final int X = 0, Y = 1;
+
     public static double[] perpendicular(double x, double y, Direction dir){
         if (dir == LEFT)
             return new double[] {y,-x};
@@ -25,14 +27,14 @@ public class Utility {
     }
     public static double[] multiply(double[] vec, double multiplier){
         double[] result = new double[2];
-        result[Engine.X] = vec[Engine.X] * multiplier;
-        result[Engine.Y] = vec[Engine.Y] * multiplier;
+        result[X] = vec[X] * multiplier;
+        result[Y] = vec[Y] * multiplier;
         return result;
     }
     public static double[] add(double[] a, double[] b){
         double[] result = new double[2];
-        result[Engine.X] = a[Engine.X] + b[Engine.X];
-        result[Engine.Y] = a[Engine.Y] + b[Engine.Y];
+        result[X] = a[X] + b[X];
+        result[Y] = a[Y] + b[Y];
         return result;
     }
     public static int sign(double number){
@@ -50,9 +52,9 @@ public class Utility {
     public static double[] vector(double angle){
         angle = Math.toRadians(angle);
         double[] vec = new double[2];
-        vec[Engine.X] = Math.cos(angle);
-        vec[Engine.Y] = Math.sin(angle);
-        return unitVector(vec[Engine.X],vec[Engine.Y]);
+        vec[X] = Math.cos(angle);
+        vec[Y] = Math.sin(angle);
+        return unitVector(vec[X],vec[Y]);
     }
 
     public static BufferedImage resize(BufferedImage src, int w, int h, double sW, double sH) {
@@ -110,8 +112,8 @@ public class Utility {
     }
     public static class CircularMapper extends Mapper{
 
-        private double offset;
-        private double toRangeSize;
+        private final double offset;
+        private final double toRangeSize;
 
         private CircularMapper(double fromStart, double fromEnd, double toStart, double toEnd, double offset){
             super(fromStart,fromEnd,toStart,toEnd);

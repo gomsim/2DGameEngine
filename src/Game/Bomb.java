@@ -12,6 +12,6 @@ class Bomb extends Entity {
         super(x,y,16,16,"GameResources/Bomb.png",8,8);
         add(new GravityComponent());
         double[] dir = Utility.unitVector(velX, velY);
-        setVelocity(dir[Engine.X] * 18, dir[Engine.Y] * 18);
+        setVelocity(dir[Utility.X] * 18, dir[Utility.Y] * 18);
     }
 }

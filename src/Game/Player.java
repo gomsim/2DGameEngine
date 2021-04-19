@@ -64,7 +64,7 @@ class Player extends Entity {
         //Note: More frequent smoke looks like the plane's damaged. Freq of 1 looks like near crash.
         if (ticksPassed() % 5 == 0){
             double[] spawnPoint = getEdgePoint(Utility.angle(-getVelX(),-getVelY()));
-            Engine.instance().add(new Smoke(spawnPoint[Engine.X],spawnPoint[Engine.Y]));
+            Engine.instance().add(new Smoke(spawnPoint[Utility.X],spawnPoint[Utility.Y]));
         }
 
         actionState = IDLE;
@@ -72,13 +72,13 @@ class Player extends Entity {
 
     private void thrust(){
         double[] perpendicular = Utility.perpendicular(getVelX(), getVelY(), Utility.Direction.LEFT);
-        double[] thrust = Utility.multiply(Utility.unitVector(perpendicular[Engine.X],perpendicular[Engine.Y]),thrustForce);
-        addVelocity(thrust[Engine.X],thrust[Engine.Y],maxSpeed);
+        double[] thrust = Utility.multiply(Utility.unitVector(perpendicular[Utility.X],perpendicular[Utility.Y]),thrustForce);
+        addVelocity(thrust[Utility.X],thrust[Utility.Y],maxSpeed);
     }
     private void shoot(){
         if (bombCooldown == 0){
             double[] spawnPoint = getEdgePoint(Utility.angle(getVelX(),getVelY()));
-            Bomb bomb = new Bomb(spawnPoint[Engine.X],spawnPoint[Engine.Y], getVelX(), getVelY());
+            Bomb bomb = new Bomb(spawnPoint[Utility.X],spawnPoint[Utility.Y], getVelX(), getVelY());
 
             Engine.instance().add(bomb);
             bombCooldown = 30;
