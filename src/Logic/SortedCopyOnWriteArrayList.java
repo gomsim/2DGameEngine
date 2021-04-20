@@ -6,6 +6,14 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * An efficient an thread safe imlpementation of a sorted list. It uses the copy
+ * on write pattern to guarantee thread safety. By always sorting incoming elements
+ * and using a comparator to determine the proper place within the datastructure
+ * upon insertion it avoids any swaps during the sorting process.
+ * @param <E> Type co be contained in list
+ */
+
 public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
 
     private static final int MAX_TRIES = 100;
