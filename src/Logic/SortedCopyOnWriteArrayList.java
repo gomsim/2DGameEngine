@@ -17,7 +17,7 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
     }
 
     //TODO: removeAll functions
-    //TODO: binary search on add and remove
+    //TODO: binary search on add and remove (This data structire is far from the most intensive part of computation, so not prioritised)
 
     @SuppressWarnings("unchecked")
     public boolean add(E ... toAdd){
@@ -26,10 +26,7 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
         Object[] oldRef;
         Object[] newRef;
         Arrays.sort(toAdd,comparator.reversed());
-        /*System.out.print("Added: [");
-        for (E element: toAdd)
-            System.out.print(((Entity)element).getZ() + ", ");
-        System.out.println("]");*/
+
         int i = 0;
         int round = 0;
         do{
@@ -49,10 +46,6 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
             }
         }while(!elements.compareAndSet(oldRef, newRef) && round++ < MAX_TRIES);
 
-        /*System.out.print("Entities: [");
-        for (Object element: elements.get())
-            System.out.print(((Entity)element).getZ() + ", ");
-        System.out.println("]");*/
         return true;
     }
 
@@ -62,6 +55,7 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
         Object[] newRef;
         boolean removed = false;
         int round = 0;
+
         do{
             oldRef = elements.get();
             newRef = new Object[oldRef.length - 1];
@@ -73,6 +67,7 @@ public class SortedCopyOnWriteArrayList<E> implements Iterable<E>{
                 newRef[n] = oldRef[o];
             }
         }while(!elements.compareAndSet(oldRef,newRef) && round++ < MAX_TRIES);
+
         return removed;
     }
 
