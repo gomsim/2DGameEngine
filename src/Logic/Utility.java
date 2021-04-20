@@ -49,6 +49,17 @@ public class Utility {
         return Math.toDegrees(Math.atan2(y,x));
     }
 
+    public static double clamp(double val, double min, double max){
+        return Math.max(min, Math.min(val, max));
+    }
+
+    public static double repel(double val, double lower, double upper){
+        if (val < upper && val > lower){
+            return val - lower < upper - val ? lower:upper;
+        }
+        return val;
+    }
+
     public static double[] vector(double angle){
         angle = Math.toRadians(angle);
         double[] vec = new double[2];
@@ -71,7 +82,7 @@ public class Utility {
     /*
      * Compensates for z^2 < 1
      */
-    public static double inverseSquare(double z){
+    public static double inverseSquare(double z){ //TODO: This needs a little love. Should probably use the repel method instead.
         boolean positive = z >= 0;
         z += positive? 1:(-1);
         double square = Math.pow(z,2);
