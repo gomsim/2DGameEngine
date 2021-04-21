@@ -14,6 +14,10 @@ import java.util.concurrent.*;
 
 public class Window extends JFrame {
 
+    private static final int NUM_THREADS = Runtime.getRuntime().availableProcessors();
+    private static final int RENDER_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private static final int RENDER_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+
     private final BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
     private final BlockingQueue<Image> front = new ArrayBlockingQueue<>(2);
 
@@ -24,10 +28,9 @@ public class Window extends JFrame {
     public Window(CopyOnWriteArraySet<Integer> inputBuffer, String name){
         int bufferSize = back.remainingCapacity();
         for (int i = 0; i < bufferSize; i++)
-            back.add(new BufferedImage(Engine.getScreenWidth(),Engine.getScreenHeight(),BufferedImage.TYPE_INT_ARGB));
+            back.add(new BufferedImage(Engine.getViewWidth(),Engine.getViewHeight(),BufferedImage.TYPE_INT_ARGB));
 
-        setTitle(name != null && !name.isEmpty() ? name:"2DGameEngine");
-        setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+        setTitle(name != null ? name:"2DGameEngine");
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -41,11 +44,7 @@ public class Window extends JFrame {
 
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 
-        try{
-            device.setFullScreenWindow(this);
-        }finally{
-            device.setFullScreenWindow(null);
-        }
+        device.setFullScreenWindow(this);
 
         bufferThread.start();
         renderThread.start();
@@ -68,7 +67,6 @@ public class Window extends JFrame {
 
     private class Bufferer implements Runnable{
 
-        private static final int NUM_THREADS = 8;
         private final ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
 
         public void run(){
@@ -87,9 +85,9 @@ public class Window extends JFrame {
                         if (insideCamera(entity)){
                             Image entityImg = entity.getTexture();
 
-                            int imagePortion = entityImg.getHeight(null)/NUM_THREADS;
-                            int entityPortion = (int)entity.getHeight()/NUM_THREADS;
-                            int imageWidth = entityImg.getWidth(null);
+                            int imagePortion = (int)entity.getHeight()/ NUM_THREADS;
+                            int entityPortion = (int)(entity.getHeight()/ NUM_THREADS);
+                            int imageWidth = (int)entity.getWidth();
                             int entityWidth = (int)entity.getWidth();
                             int entityX = (int)entity.getX();
                             int entityY = (int)entity.getY();
@@ -103,7 +101,6 @@ public class Window extends JFrame {
                             }
 
                             pool.invokeAll(tasks);
-                            //bufferGraphics.drawImage(entity.getTexture(), (int)entity.getX(), (int)entity.getY(), null);
                         }
                     }
 
@@ -117,8 +114,8 @@ public class Window extends JFrame {
         }
         
         private boolean insideCamera(Entity entity){
-            return !((entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
-                    (entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight()));
+            return !(entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
+                    !(entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight());
         }
     }
 
@@ -130,7 +127,8 @@ public class Window extends JFrame {
                     Image image = front.take();
                     Graphics renderGraphics = getGraphics();
 
-                    renderGraphics.drawImage(image, 0,0, null);
+                    renderGraphics.drawImage(image, 0,0, RENDER_WIDTH, RENDER_HEIGHT,0, 0, Engine.getViewWidth(), Engine.getViewHeight(), null);
+
 
                     back.add(image);
                     renderGraphics.dispose();

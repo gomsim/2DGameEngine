@@ -21,10 +21,10 @@ class Game {
 
         engine.add(new Sky());
         for (int i = 0; i < 50; i++){
-            engine.add(Cloud.createCloud(RANDOM.nextInt(Engine.getScreenWidth()), Engine.getScreenHeight()/2 -50 + RANDOM.nextInt(100),false));
+            engine.add(Cloud.createCloud(RANDOM.nextInt(Engine.getViewWidth()), (double)Engine.getViewHeight()/2 -50 + RANDOM.nextInt(100),false));
         }
         for (int i = 0; i < 4; i++){
-            engine.add(Cloud.createCloud(RANDOM.nextInt(Engine.getScreenWidth()), Engine.getScreenHeight()/2 -50 + RANDOM.nextInt(100),true));
+            engine.add(Cloud.createCloud(RANDOM.nextInt(Engine.getViewWidth()), (double)Engine.getViewHeight()/2 -50 + RANDOM.nextInt(100),true));
         }
 
         /*engine.addAll(

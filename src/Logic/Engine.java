@@ -14,10 +14,10 @@ public class Engine {
     private static Engine instance;
 
     private static final int FPS = 60;
-    public static final int VIEW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
-    public static final int VIEW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
     public static final int SCREEN_WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
     public static final int SCREEN_HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+    public static final int VIEW_WIDTH = 1920;
+    public static final int VIEW_HEIGHT = 1080;
 
     private String name;
     private boolean running = true;

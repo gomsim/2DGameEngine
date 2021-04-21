@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 class Player extends Entity {
 
     // Offset can be added to make the plane look like it shifts its body movement slightly before turning
-    private Utility.Mapper rotationMapper = Utility.getCircularMapper(-180,180,0,15, 0);//-0.2);
+    private final Utility.Mapper rotationMapper = Utility.getCircularMapper(-180,180,0,15, 0);//-0.2);
     private double maxSpeed = 24;
     private double thrustForce = maxSpeed * 0.03;
     private static final int IDLE = 0;
@@ -24,7 +24,7 @@ class Player extends Entity {
     public Player(int x, int y){
         super(x,y,32*3,32*3, "GameResources/Plane.png", 32, 32);
         add(new GravityComponent());
-        add(new CameraFocusComponent(250,Engine.getViewHeight()/2-50,150));
+        add(new CameraFocusComponent(250,(double)Engine.getViewHeight()/2-50,150));
         setVelocity(maxSpeed,0);
 
         Engine.instance().addKeyBinding(KeyEvent.VK_UP, this::setThrusting);
