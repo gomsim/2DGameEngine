@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Window extends JFrame {
 
@@ -21,8 +22,9 @@ public class Window extends JFrame {
     private final BlockingQueue<Image> back = new ArrayBlockingQueue<>(2);
     private final BlockingQueue<Image> front = new ArrayBlockingQueue<>(2);
 
-    private final Thread renderThread = new Thread(new Bufferer(),"bufferThread");
-    private final Thread bufferThread = new Thread(new Renderer(),"renderThread");
+    private final Bufferer bufferer = new Bufferer();
+    private final Renderer renderer = new Renderer();
+
     private final KeyInputListener keyInputListener;
 
     public Window(CopyOnWriteArraySet<Integer> inputBuffer, String name){
@@ -46,13 +48,13 @@ public class Window extends JFrame {
 
         device.setFullScreenWindow(this);
 
-        bufferThread.start();
-        renderThread.start();
+        new Thread(bufferer,"bufferThread").start();
+        new Thread(renderer,"renderThread").start();
     }
 
     public void close(){
-        renderThread.interrupt();
-        bufferThread.interrupt();
+        renderer.kill();
+        bufferer.kill();
         removeKeyListener(keyInputListener);
 
         dispose();
@@ -68,10 +70,11 @@ public class Window extends JFrame {
     private class Bufferer implements Runnable{
 
         private final ExecutorService pool = Executors.newFixedThreadPool(NUM_THREADS);
+        private final AtomicBoolean running = new AtomicBoolean(true);
 
         public void run(){
             try{
-                while(true){
+                while(running.get()){
                     SortedCopyOnWriteArrayList<Entity> toRender = Engine.instance().getEntities();
 
                     //Uncomment to cap frame rate to 60 FPS
@@ -113,13 +116,19 @@ public class Window extends JFrame {
             return !(entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
                     !(entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight());
         }
+
+        private void kill(){
+            running.set(false);
+        }
     }
 
     private class Renderer implements Runnable{
 
+        private final AtomicBoolean running = new AtomicBoolean(true);
+
         public void run(){
             try{
-                while(true){
+                while(running.get()){
                     Image image = front.take();
                     Graphics renderGraphics = getGraphics();
 
@@ -131,6 +140,10 @@ public class Window extends JFrame {
             }catch(InterruptedException e){
                 System.out.println("RenderThread interrupted");
             }
+        }
+
+        private void kill(){
+            running.set(false);
         }
     }
 
