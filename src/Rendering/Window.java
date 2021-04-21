@@ -152,7 +152,7 @@ public class Window extends JFrame {
 
         CopyOnWriteArraySet<Integer> inputBuffer;
 
-        KeyInputListener(CopyOnWriteArraySet<Integer> inputBuffer){
+        private KeyInputListener(CopyOnWriteArraySet<Integer> inputBuffer){
             this.inputBuffer = inputBuffer;
         }
 
