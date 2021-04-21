@@ -107,8 +107,9 @@ public class Window extends JFrame {
                     bufferGraphics.dispose();
                 }
             }catch(InterruptedException e){
-                pool.shutdownNow();
-                System.out.println("BufferThread interrupted");
+                e.printStackTrace();
+            }finally {
+                pool.shutdown();
             }
         }
         
@@ -138,7 +139,7 @@ public class Window extends JFrame {
                     renderGraphics.dispose();
                 }
             }catch(InterruptedException e){
-                System.out.println("RenderThread interrupted");
+                e.printStackTrace();
             }
         }
 
