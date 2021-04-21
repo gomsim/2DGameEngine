@@ -32,7 +32,6 @@ public abstract class Entity {
         try{
             this.texture = texture;
             this.texture = Utility.resize(this.texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
-            //this.texture = Window.makeCompatibleImage(texture);
         }catch(NullPointerException e){
             this.texture = nullSprite;
         }
