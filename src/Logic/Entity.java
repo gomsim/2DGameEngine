@@ -30,8 +30,7 @@ public abstract class Entity {
         this.width = width;
         this.height = height;
         try{
-            this.texture = texture;
-            this.texture = Utility.resize(this.texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
+            this.texture = Utility.resize(texture,(int)width,(int)height,width/textureWidth,height/textureHeight);
         }catch(NullPointerException e){
             this.texture = nullSprite;
         }
