@@ -83,11 +83,7 @@ public class Window extends JFrame {
 
                     for (Entity entity: toRender){
                         if (insideCamera(entity)){
-                            Image entityImg = entity.getTexture();
-
-                            int imagePortion = (int)entity.getHeight()/ NUM_THREADS;
-                            int entityPortion = (int)(entity.getHeight()/ NUM_THREADS);
-                            int imageWidth = (int)entity.getWidth();
+                            int entityPortionHeight = (int)(entity.getHeight()/ NUM_THREADS);
                             int entityWidth = (int)entity.getWidth();
                             int entityX = (int)entity.getX();
                             int entityY = (int)entity.getY();
@@ -95,9 +91,9 @@ public class Window extends JFrame {
                             java.util.List<Callable<Boolean>> tasks = new ArrayList<>();
                             for (int i = 0; i < NUM_THREADS; i++){
                                 final int count = i;
-                                tasks.add(() -> bufferGraphics.drawImage(entityImg,
-                                        entityX,entityY+entityPortion*count, entityX+entityWidth, entityY+entityPortion*(count+1),
-                                        0,imagePortion*count, imageWidth, imagePortion*(count+1),null));
+                                tasks.add(() -> bufferGraphics.drawImage(entity.getTexture(),
+                                        entityX,entityY+entityPortionHeight*count, entityX+entityWidth, entityY+entityPortionHeight*(count+1),
+                                        0,entityPortionHeight*count, entityWidth, entityPortionHeight*(count+1),null));
                             }
 
                             pool.invokeAll(tasks);
@@ -128,7 +124,6 @@ public class Window extends JFrame {
                     Graphics renderGraphics = getGraphics();
 
                     renderGraphics.drawImage(image, 0,0, RENDER_WIDTH, RENDER_HEIGHT,0, 0, Engine.getViewWidth(), Engine.getViewHeight(), null);
-
 
                     back.add(image);
                     renderGraphics.dispose();
