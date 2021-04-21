@@ -50,7 +50,7 @@ public class Window extends JFrame {
         renderThread.start();
     }
 
-    public void exit(){
+    public void close(){
         renderThread.interrupt();
         bufferThread.interrupt();
         removeKeyListener(keyInputListener);

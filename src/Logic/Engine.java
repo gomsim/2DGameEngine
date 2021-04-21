@@ -38,6 +38,7 @@ public class Engine {
         int tickInterval = 1000 / FPS;
         long nextTick;
         long delay;
+
         while (running){
             nextTick = System.currentTimeMillis() + tickInterval;
 
@@ -84,7 +85,7 @@ public class Engine {
             }
         }
 
-        window.exit();
+        window.close();
     }
 
     public void setName(String name){
