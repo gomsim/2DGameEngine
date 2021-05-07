@@ -36,16 +36,6 @@ public abstract class Entity {
         }
     }
 
-    private static BufferedImage loadNullSprite(){
-        BufferedImage nullSprite = null;
-        try{
-            nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        return nullSprite;
-    }
-
     public Entity(double x, double y, double width, double height, String texturePath, int textureWidth, int textureHeight){
         this(x,y,width,height,loadTexture(texturePath),textureWidth,textureHeight);
     }
@@ -72,6 +62,16 @@ public abstract class Entity {
 
     public void destroy(){}
 
+    private static BufferedImage loadNullSprite(){
+        BufferedImage nullSprite = null;
+        try{
+            nullSprite = ImageIO.read(new File("EngineResources/NullSprite.png"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return nullSprite;
+    }
+
     private static BufferedImage loadTexture(String texturePath){
         BufferedImage texture = null;
         try{
@@ -85,6 +85,7 @@ public abstract class Entity {
     public Image getTexture(){
         return getSubTexture(0,0);
     }
+
     protected Image getSubTexture(int x, int y){
         Image subTexture;
         try{
@@ -100,10 +101,6 @@ public abstract class Entity {
     }
     public void remove(EntityComponent component){
         components.remove(component);
-    }
-
-    public void setZ(double z){
-        this.z = z;
     }
 
     public void tick(){
@@ -142,6 +139,9 @@ public abstract class Entity {
     }
     public double[] getPosition(){
         return new double[] {x, y};
+    }
+    public void setZ(double z){
+        this.z = z;
     }
     public void setPosition(double x, double y){
         this.x = x;
