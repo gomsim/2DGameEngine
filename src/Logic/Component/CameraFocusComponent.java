@@ -32,7 +32,7 @@ public class CameraFocusComponent extends CameraComponent{
         double camMovY = unitDir[1] * overshoot;
 
         moveCamera(camMovX,camMovY);
-        owner.setRelativePosition(-camMovX,-camMovY);
+        owner.moveBy(-camMovX,-camMovY);
     }
 
 }

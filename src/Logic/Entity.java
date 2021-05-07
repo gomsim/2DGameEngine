@@ -147,7 +147,7 @@ public abstract class Entity {
         this.x = x;
         this.y = y;
     }
-    public void setRelativePosition(double x, double y){
+    public void moveBy(double x, double y){
         this.x += x;
         this.y += y;
     }

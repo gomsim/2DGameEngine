@@ -85,7 +85,7 @@ public class Window extends JFrame {
                     Graphics bufferGraphics = image.getGraphics();
 
                     for (Entity entity: toRender){
-                        if (insideCamera(entity)){
+                        if (insideView(entity)){
                             int entityPortionHeight = (int)(entity.getHeight()/ NUM_THREADS);
                             int entityWidth = (int)entity.getWidth();
                             int entityX = (int)entity.getX();
@@ -113,7 +113,7 @@ public class Window extends JFrame {
             }
         }
         
-        private boolean insideCamera(Entity entity){
+        private boolean insideView(Entity entity){
             return !(entity.getX() + entity.getWidth() < 0 || entity.getX() > Engine.getViewWidth()) ||
                     !(entity.getY() + entity.getHeight() < 0 || entity.getY() > Engine.getViewHeight());
         }

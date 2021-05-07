@@ -19,6 +19,6 @@ public class CameraEffectComponent extends CameraComponent{
         double inverseSquare = Utility.inverseSquare(owner.getZ());
         double x = camMovementX() * inverseSquare;
         double y = camMovementY() * inverseSquare;
-        owner.setRelativePosition(affectsX? -x:0, affectsY? -y:0);
+        owner.moveBy(affectsX? -x:0, affectsY? -y:0);
     }
 }
