@@ -1,7 +1,7 @@
 package Game;
 
 import Logic.*;
-import Logic.Component.CameraFocusComponent;
+import Logic.Component.CameraFollowComponent;
 import Logic.Component.GravityComponent;
 
 import java.awt.*;
@@ -24,7 +24,7 @@ class Player extends Entity {
     public Player(int x, int y){
         super(x,y,32*3,32*3, "GameResources/Plane.png", 32, 32);
         add(new GravityComponent());
-        add(new CameraFocusComponent(250,(double)Engine.getViewHeight()/2-50,150));
+        add(new CameraFollowComponent(250,(double)Engine.getViewHeight()/2-50,150));
         setVelocity(maxSpeed,0);
 
         Engine.instance().addKeyBinding(KeyEvent.VK_UP, this::setThrusting);

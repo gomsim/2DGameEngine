@@ -3,20 +3,20 @@ package Logic.Component;
 import Logic.Entity;
 import Logic.Utility;
 
-public class CameraFocusComponent extends CameraComponent{
+public class CameraFollowComponent extends CameraComponent{
 
     private final double focusRadius;
     private final double focusX, focusY;
 
-    public CameraFocusComponent(double focusX, double focusY, double focusRadius){
+    public CameraFollowComponent(double focusX, double focusY, double focusRadius){
         this.focusX = focusX;
         this.focusY = focusY;
         this.focusRadius = focusRadius;
     }
-    public CameraFocusComponent(Entity owner, double focusRadius){
+    public CameraFollowComponent(Entity owner, double focusRadius){
         this(owner.getX(),owner.getY(),focusRadius);
     }
-    public CameraFocusComponent(Entity owner){
+    public CameraFollowComponent(Entity owner){
         this(owner.getX(),owner.getY(),0);
     }
 
